@@ -1,26 +1,50 @@
 % (c) 2014 Daniele Zambelli - daniele.zambelli@gmail.com
 % 
-% Tutti i grafici per il capitolo relativo alle parabole
+% Tutti i grafici per il capitolo relativo agli iperreali
 %
-% 
+
+\newcommand{\microscopioa}{% Microscopi per vedenodere~3,14.
+    \disegno{
+    \assecontrattini{-5}{+5.3}{0}{x}
+    \draw (0, 0) [below] node{0} (1, 0) [below] node{1};
+    \microscopio{(3, 0)}{3}{110}{-30}{(7.6, 10)}{10}
+    \assecontrattini{-1.2}{+2.2}{3}{}
+%     \microscopio{(1, 3.4)}{2}{120}{-50}{(7.6, 10)}{10}
+    }
+}
+
+\newcommand{\provatelescopio}{% 
+    % Esponenziali con basi diverse.
+    \disegno{
+    \rcom{-10}{+10}{-5}{5}{gray!50, very thin, step=1}
+      \tkzInit[xmin=-10.3,xmax=+10.3,ymin=-5.3,ymax=+5.3]
+      \tkzFct[domain=-10.3:+10.3]{(1./2)*x}
+    \draw (-1, 1) pic [rotate=27, scale=.5] {telescopio=\infty};
+    }
+}
+
 
 \newcommand{\espdueterzi}{% 
     % Esponenziali con basi diverse.
     \disegno{
     \rcom{-10}{+10}{-1}{10}{gray!50, very thin, step=1}
     \begin{scope}[ultra thick, color=Maroon!50!black]
-     \tkzInit[xmin=-10.3, xmax=+10.3, ymin=-0.3, ymax=+10.3]
-     \tkzFct[domain=-10.3:+6]{(3./2)**x}
-     \tkzFct[color=Green!50!black, domain=-6:+10.3]{(2./3)**x}
-     \begin{scope}[color=Black!50!black]
-      \filldraw (1, 3./2) circle (1.2pt);
-      \filldraw (1, 2./3) circle (1.2pt);
-     \end{scope}
-     \filldraw [color=Red](0, 1) circle (1.2pt);  
+      \tkzInit[xmin=-10.3,xmax=+10.3,ymin=-0.3,ymax=+10.3]
+      \tkzFct[domain=-10.3:+6]{(3./2)**x}
+%       \begin{scope}[color=Green!50!black]
+        \tkzFct[color=Green!50!black, domain=-6:+10.3]{(2./3)**x}
+%       \end{scope}
+      \begin{scope}[color=Black!50!black]
+        \filldraw (1, 3./2) circle (1.2pt);
+        \filldraw (1, 2./3) circle (1.2pt);
+      \end{scope}
+%       \begin{scope}[color=Red!50!black]
+        \filldraw [color=Red!50!black] (0, 1) circle (1.2pt);  
+%       \end{scope}
     \end{scope}
     \begin{scope}[color=black]
-     \draw (-7.3, 7) node{\(f(x)=\tonda{\dfrac{2}{3}}^x\)}; 
-     \draw ((7.3, 7) node{\(f(x)=\tonda{\dfrac{3}{2}}^x\)};
+      \draw (-5.2, 9.5) node{a}; 
+      \draw ((5.2, 9.5) node{b};
     \end{scope}
     }
 }
@@ -28,20 +52,29 @@
 \newcommand{\logduebasi}{% 
     % Esponenziali con basi diverse.
     \disegno{
-    \rcom{-1}{+10}{-9}{9}{gray!50, very thin, step=1.0}
+    \rcom{-1}{+10}{-10}{10}{gray!50, very thin, step=1}
     \begin{scope}[ultra thick, color=Maroon!50!black]
-      \tkzInit[xmin=-1., xmax=+80, xstep=1., ymin=-10.3,ymax=+10.3]
-      \tkzFct[domain=.003:+10]{log(x)/log(2)}
-      \filldraw (2, 1) circle (1.2pt);
-      \begin{scope}[ultra thick, color=Green!50!black]
-        \tkzFct[domain=.003:+10]{log(x)/log(1./2)}
-        \filldraw (2, -1) circle (1.2pt);
-      \end{scope}
+    \tkzInit[xmin=-1.3,xmax=+10.3,ymin=-10.3,ymax=+10.3]
+    \tkzFct[domain=0:+10.3]{log(x)/log(3)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(2)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(3./2)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(5./4)}
+    \foreach \pi in {(3, 1), (2, 1), (3./2, 1), (5./4, 1)}
+      \filldraw \pi circle (1.2pt);
+    \begin{scope}[color=Green!50!black]
+    \tkzFct[domain=0:+10.3]{log(x)/log(1./3)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(1./2)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(2./3)}
+    \tkzFct[domain=0:+10.3]{log(x)/log(4./5)}
+    \foreach \pi in {(3, -1), (2, -1), (3./2, -1), (5./4, -1)}
+      \filldraw \pi circle (1.2pt);
+    \end{scope}
     \end{scope}
     \begin{scope}[color=black]
-      \draw (9.5, 2.8) node{a=2}; 
-      \draw (9.5, -2.8) node{a=0.5};
+    \draw (7.5, 9.5) node{a} (9.5, 5.2) node{b} 
+          (9.5, 2.8) node{c} (9.5, 1.5) node{d}; 
+    \draw (9.5, -1.5) node{e} (9.5, -2.8) node{f} 
+          (9.5, -5.2) node{g} (7.5, -9.5) node{h};
     \end{scope}
-      \filldraw [color=Red] (1,0) circle (1.2pt);
     }
 }

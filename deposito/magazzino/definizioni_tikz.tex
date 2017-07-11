@@ -3,6 +3,7 @@
 
 %--------------------------
 % Inizializza Tikz con unità di misura 5mm, e realizza un disegno:
+
 \newcommand{\disegno}[1]{
   % Esempio di chiamata:
   %% 
@@ -110,6 +111,54 @@
   \rcomvar{#1}{#2}{#3}{#4}{#5}{\(x\)}{\(y\)}
 }
 
+% \newcommand{\rcom}[5]{% Riferimento Cartesiano Ortogonale Monometrico: x-y.
+%   % Esempio di chiamata:
+%   %% \disegno{\RCOM{-7}{+7}{-11}{+10}{gray!50, very thin, step=1}}
+% % \begin{tikzpicture}[x=5mm, y=5mm, smooth]
+%   \def \xmi{#1}
+%   \def \xma{#2}
+%   \def \ymi{#3}
+%   \def \yma{#4}
+%   \def \griglia{#5}
+%   \draw[#5] (\xmi-0.3, \ymi-0.3) grid (\xma+0.3, \yma+0.3); % Griglia
+%   \begin{scope}[-{Stealth[length=2mm, open, round]}, black] % Assi
+%     \draw (\xmi-0.3, 0) -- (\xma+0.3, 0) node [below] {$x$};
+%     \draw (0, \ymi-0.3) -- (0, \yma+0.3) node [left] {$y$};
+%   \end{scope}
+% % \end{tikzpicture}
+% 
+% % \newcommand{\RCOM}[5]{% Coordinate cartesiane ortogonali: x-y.
+% % \begin{tikzpicture}[x=5mm, y=5mm, smooth]
+% %   \def \xmi{#1}
+% %   \def \xma{#2}
+% %   \def \ymi{#3}
+% %   \def \yma{#4}
+% %   \def \griglia{#5}
+% %   \coordinate [label=$x$] (x) at (\xma, 0);     
+% %   \draw [-{Stealth[length=2mm, open, round]}] (\xmi, 0) -- (\xma, 0);
+% %   \coordinate [label=$y$] (y) at (0, \yma);	
+% %   \draw [-{Stealth[length=2mm, open, round]}] (0, \ymi) -- (0, \yma);
+% %   \draw [#5] (\xmi, \ymi) grid (\xma, \yma);
+% % \end{tikzpicture}
+% }
+
+% \newcommand{\rcomvario}[7]{% Rif. Cart. Ort. Mon.: v_ind-v_dip.
+%   % Esempio di chiamata:
+%   %% \disegno{\RCOMvario{0}{6}{0}{6}{gray!50, very thin, step=1}{t}{v}}
+%   \def \xmi{#1}
+%   \def \xma{#2}
+%   \def \ymi{#3}
+%   \def \yma{#4}
+%   \def \griglia{#5}
+%   \def \vind{#6}
+%   \def \vdip{#7}
+%   \draw [#5] (\xmi, \ymi) grid (\xma, \yma);
+%   \coordinate [label=$\vind$] (x) at (\xma, 0);     
+%   \draw [-{Stealth[length=2mm, open, round]}] (\xmi, 0) -- (\xma, 0);
+%   \coordinate [label=$\vdip$] (y) at (0, \yma);     
+%   \draw [-{Stealth[length=2mm, open, round]}] (0, \ymi) -- (0, \yma);
+% }
+
 \newcommand{\testodraw}[3]{% Scrive un testo.
   % Esempio di chiamata:
   %% 
@@ -145,6 +194,7 @@
 
 %--------------------------
 % Funzioni per i grafi delle disequazioni
+
 \newcommand{\cerchietto}[2]{% Cerchietto
   % Esempio di chiamata:
   %% \cerchietto{-5/3}{0}
@@ -218,4 +268,40 @@
   \draw [-] (-\posx, \posv) -- (-\posx, \dimy) node [above] {\primoval};
   \draw [-] (0, \posv) -- (0, \dimy) node [above] {\secondoval};
   \draw [-] (+\posx, \posv) -- (+\posx, \dimy) node [above] {\terzoval};
+}
+
+%--------------------------
+% Funzioni per gli strumenti grafici
+
+\newcommand{\microscopio}[6]{% Microscopio messo sopra.
+  % Esempio di chiamata:
+  % \microscopioa{(8, 5)}{2}{120}{-50}{(7.6, 10)}{\infty}
+  \def \punto{#1}
+  \def \lung{#2}
+  \def \anga{#3}
+  \def \angb{#4}
+  \def \postimes{#5}
+  \def \labeltimes{#6}
+  \draw \punto -- +(\anga: \lung)
+  arc [start angle=\angb, delta angle=350, radius=2] -- cycle;
+  \node at \postimes {\(\times \labeltimes\)};
+}
+
+\tikzset{
+  telescopio/.pic={% Disegna un telescopio non standard
+  % Esempio di chiamata:
+  % \draw (-1, 2) pic [rotate=27, telescopio=\infty] {telescopio};
+  \begin{scope}[ultra thick]
+    \draw [fill=black, rounded corners=2] (5.4, -1.4) rectangle (6.9, -0.4);
+    \draw [rounded corners=2] (1.4, -1.3) rectangle (5.6, -0.5);
+    \draw (0.4, -1.2) rectangle (1.4, -0.6);
+    \draw [fill=white] (0.8, -1.2) circle (0.2);
+    \draw [fill=black, rounded corners=1] 
+      (0.4, -1.3) -- (0.4, -0.5) -- (-0.45, -0.5) -- cycle;
+    \draw (-0.2, -0.5) rectangle (0.2, -0.2);
+    \draw [fill=black, rounded corners=1] (-0.3, -0.2) rectangle (0.3, 0);
+    \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9) 
+      node [right, yshift=1mm] {\(#1\)};
+  \end{scope}
+  }
 }

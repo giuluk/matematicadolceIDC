@@ -1,1 +1,1 @@
-/home/bruno/Scrivania/matematicadolce/creapdf.py
+../../../creapdf.py

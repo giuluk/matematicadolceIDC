@@ -1,1 +1,1 @@
-/home/bruno/Scrivania/matematicadolce/Makefile
+../../../Makefile
