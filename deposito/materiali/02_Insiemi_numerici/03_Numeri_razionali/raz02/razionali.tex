@@ -2,21 +2,6 @@
 % (c) 2014 Claudio Carboncini - claudio.carboncini@gmail.com
 % (c) 2014 Daniele Zambelli - daniele.zambelli@gmail.com
 
-
-% -------------------------------------------------
-% TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-%
-% Retta dei numeri
-% Forma mista
-% Numeri periodici particolari
-% Notazione scientifica e ordine di grandezza
-% Rapporto, proporzione, percentuale
-% Problemi con le frazioni
-% 
-% 
-% -------------------------------------------------
-
-
 \input{\folder razionali_grafici.tex}
 
 % -------------------------------------------------
@@ -197,8 +182,56 @@ riguardo l'uso dei segni nelle frazioni:
 \[-\dfrac{a}{b} = \dfrac{-a}{b} = \dfrac{a}{-b} \quad \text{e} \quad
   +\dfrac{a}{b} = \dfrac{-a}{-b}
 \]
-
 \end{osservazione}
+
+\subsection{Rappresentazione mista}
+\label{sub:razionali_rappresentazione_mista}
+
+Consideriamo la frazione \(\dfrac{3}{3}\). Dividere qualcosa in tre parti e 
+poi prenderle tutte e tre significa prenderla tutta: tre terzi significa 
+un intero. E quattro terzi? Quattro terzi significa un intero più un terzo.
+
+Ogni frazione può essere scritta in forma \emph{mista} cioè nella somma di 
+una parte intera più una frazione minore di uno. Vediamo alcuni esempi:
+\[\frac{4}{3} = 1 + \frac{1}{3}; \quad
+\frac{5}{3} = 1 + \frac{2}{3}; \quad
+\frac{6}{3} = 2 + \frac{0}{3}; \quad
+\frac{5}{6} = 0 + \frac{5}{6}; \quad
+\frac{7}{2} = 3 + \frac{1}{2}; \quad
+-\frac{8}{5} = -\tonda{1 + \frac{3}{5}}; \quad
+% \frac{24}{5} = 4 + \frac{4}{5}; \quad
+\]
+
+\subsection{Rappresentazione sulla retta}
+\label{sub:razionali_rappresentazione_retta}
+
+È possibile rappresentare i numeri razionali su un asse cartesiano. Una 
+retta dotata di verso e unità di misura permette di associare ad ogni 
+numero razionale un preciso punto. Alcuni esempi:
+
+\begin{center}
+%  \rettafra{{2.5 / \(\frac{5}{2}\), -1.33 / \(-\frac{5}{2}\)}}
+ \rettafra
+\end{center}
+
+\begin{teorema}
+ Tra due numeri razionali diversi esiste sempre almeno un altro numero 
+razionale.
+\end{teorema}
+
+Infatti nei numeri razionali è sempre possibile calcolare la media tra due 
+numeri e se questi sono diversi tra loro, la media è maggiore del più 
+piccolo e minore del più grande.
+
+\begin{corollario}
+ Tra due numeri razionali diversi esistono infiniti altri numeri razionali.
+\end{corollario}
+
+Le affermazioni precedenti si riassumono dicendo che:
+
+\begin{definizione}
+ L'insieme dei numeri razionali è \emph{denso}.
+\end{definizione}
 
 \subsection{Frazioni equivalenti}
 \label{sub:razionali_equivalenti}
@@ -255,10 +288,7 @@ Oppure, scoperto che il \(\text{MCD}\punto{420}{360}=60\) dividendo sia il
 numeratore sia il denominatore per~60:
  \[\dfrac{\cancel{420}^{7}}{\cancel{360}_{6}} = \dfrac{7}{6}\]
 \end{esempio}
-
-
 \end{osservazione}
-
 
 \begin{osservazione}
  Date due frazioni qualsiasi posso sempre trovarne due equivalenti che 
@@ -600,6 +630,13 @@ trasformato in una frazione. Quindi usare l'una o l'altra delle due
 notazioni per i numeri razionali è equivalente.
 
 \begin{osservazione}
+ Applica la precedente regola per trasformare in frazione il 
+ numero~\(3,\overline{9}\). Cosa ottieni? Puoi estendere questo risultato 
+ad una regola generale?
+\end{osservazione}
+
+
+\begin{osservazione}
  Abbiamo parlato di numeri decimali limitato e di numeri decimali 
 periodici, esistono anche numeri decimali illimitati e non periodici?
 Se un numero decimale continua all'infinito, è possibile che continui ad 
@@ -611,8 +648,12 @@ saranno periodici. Eccone alcuni:\\
 \(0,101001000100001000001000000100000001\dots\)\\
 \(0,1234567891011121314151617181920212223\dots\)\\
 \(0,1223334444\dots9999999991010101010101010101011\dots\)\\
-Ma si può dimostrare che \(sqrt{2}\) è illimitato e non periodico
-e anche \(sqrt{3}\)\dots 
+Ma si può dimostrare che \(\sqrt{2}\) è illimitato e non periodico
+e anche \(\sqrt{3}\)\dots 
+
+Anche il numero: \(3,14159265358979323846264338327950288\dots\) a cui è 
+stato dato il nome di \(\pi\) (pi greco) è un numero 
+illimitato e non periodico quindi non può essere scritto come frazione.
 
 Questi numeri si chiamano ``irrazionali''.
 
@@ -621,9 +662,380 @@ dimostrato che i numeri irrazionali sono infinitamente di più dei numeri
 razionali.
 \end{osservazione}
 
+\section{Notazione scientifica e ordine di grandezza}
+\label{sec:razionali_notazione_scientifica}
+
+Le discipline scientifiche quali la fisica, la biologia, l'astronomia etc,
+si trovano spesso a doversi confrontare con misurazioni di grandezze 
+espresse 
+da numeri molto grandi. Per esempio:
+
+\begin{itemize*}
+\item il raggio della Terra è circa~$6\,400\,000\unit{m}$
+\item la velocità della luce nel vuoto è~$299\,790\,000\unit{m/s}$
+\item un globulo rosso ha il diametro di~$0,000007\unit{m}$.
+\end{itemize*}
+
+I primi due numeri sono `molto grandi', mentre l'ultimo è `molto piccolo' e 
+operare con numeri simili, non è affatto semplice.
+
+Per renderci conto di ciò, consideriamo un rettangolo di dimensioni
+$b =~0,00000006\unit{m}$ e~$h =~0,0000002\unit{m}$ e calcoliamone l'area:
+\[A=b\cdot h=0,00000006\cdot0,0000002=0,000000000000012.\]
+
+\begin{center}
+\input{\folder lbr/fig032_rett.pgf}
+\end{center}
+
+Come si può notare, per scrivere il risultato di un'operazione tra due 
+numeri 
+in questo caso `molto piccoli', è necessario fare particolare attenzione in 
+quanto, per l'eccessiva quantità di cifre decimali, è facile commettere 
+degli 
+errori.
+
+Per risolvere questo problema, si preferisce utilizzare una scrittura 
+compatta 
+che permette di scrivere questo tipo di numeri in forma più agevole.
+Una tale scrittura prende il nome di \emph{notazione scientifica}.
+
+\begin{definizione}
+Un numero~$\alpha$ è scritto in \emph{notazione scientifica} se
+si presenta nella forma:
+\[\alpha=k\cdot10^n,\] 
+dove~$k$ è un numero decimale maggiore o uguale a~$1$ e minore di~$10$ 
+e~$n$ 
+è un numero intero.
+\end{definizione}
+
+\begin{exrig}
+ \begin{esempio}
+I numeri~$3,5\cdot10^7$ e~$8,9\cdot10^{-5}$ sono scritti in notazione 
+scientifica, mentre i numeri~$0,5\cdot10^3$ e~$10,3\cdot 10^{-8}$ non sono 
+scritti in notazione scientifica in quanto il numero davanti alla potenza 
+di~10 nel primo caso è~0,5 che è minore di~1, nel secondo caso è~10,3 che è 
+maggiore di~10.
+ \end{esempio}
+\end{exrig}
+
+\subsection{Notazione scientifica}
+Consideriamo la misura del diametro del globulo rosso, 
+ovvero~$0,000007\unit{m}$.
+Per esprimere questa misura in notazione scientifica basta considerare la 
+sua 
+frazione generatrice, ovvero:
+\[0,000007\unit{m}=7\cdot\frac{1}{1000000}\unit{m}=7\cdot10^{-6}\unit{m}.\]
+
+Allo stesso modo il numero~0,000000026 viene scritto in notazione 
+scientifica 
+come segue:
+\[0,000000026=2,6\cdot\frac{1}{100000000}=2,6\cdot\frac{1}{10^8}=2,6\cdot10^
+{-8}.\]
+Si osservi che in questo secondo caso abbiamo preso in considerazione il 
+valore~2,6 anziché~26, in quanto il numero~$k$ deve essere minore di~10.
+
+Consideriamo ora la misura del raggio della Terra, 
+ovvero~$6\,400\,000\unit{m}$,
+la sua espressione in notazione scientifica sarà:~$6,4\cdot10^6$.
+
+Allo stesso modo il numero~$340\,000\,000\,000$ viene scritto in notazione 
+scientifica~$3,4\cdot10^{11}$.
+Si osservi che in questo secondo caso abbiamo preso in considerazione il 
+valore~3,4 anziché~34, in quanto, come si è già detto, il numero~$k$ deve 
+essere minore di~10.
+
+\osservazione A numeri `piccoli', corrisponde una potenza di dieci con 
+esponente negativo; 
+a numeri `grandi', corrisponde una potenza di dieci con esponente positivo.
+
+\begin{procedura}
+Scrivere un numero decimale in notazione scientifica:
+\begin{enumeratea} % [label=Passo~\arabic{*}.]
+ \item spostare la virgola di tanti posti in modo da avere una sola cifra
+  diversa da zero a sinistra;
+ \item scrivere la moltiplicazione tra il numero ottenuto al passo 
+precedente
+  e dieci elevato ad un esponente pari al numero si spostamenti della 
+virgola 
+  effettuati se la virgola è stata spostata verso sinistra o elevato al suo 
+  opposto se la virgola è stata spostata verso destra.
+\end{enumeratea}
+\end{procedura}
+
+\begin{exrig}
+ \begin{esempio}
+ Scrivi 348\,000\,000\,000\,000 in notazione scientifica.
+ Per comodità riscrivo il numero evidenziando l'attuale 
+ posizione della virgola:~348\,000\,000\,000\,000,0.
+ \begin{enumeratea}
+  \item Per ottenere un numero con una sola cifra diversa 
+   da zero a sinistra della virgola devo spostare la virgola di~14 posti 
+   verso sinistra;
+  \item ora scrivo la moltiplicazione tra il numero 
+   ottenuto:~$3,48$~e~10 elevato alla~14:~$3,48 \cdot 10^{14}$.
+ \end{enumeratea}
+
+ \end{esempio}
+ \begin{esempio}
+  Scrivi 0,0000340 in notazione scientifica.
+ \begin{enumeratea}
+  \item Devo spostare la virgola di~5 posti verso destra;
+  \item Moltiplico il numero ottenuto:~$3,40$~e~10 elevato 
+alla~$-5$:~$3,40 \cdot 10^{-5}$.
+ \end{enumeratea}
+ \end{esempio}
+ \begin{esempio}
+  Riprendendo il problema della lamina rettangolare, 
+  le sue dimensioni in notazione scientifica vengono scritte come:
+  $b=6\cdot10^{-8}\unit{m}, h=2\cdot10^{-7}\unit{m}$.
+  L'area sarà quindi:
+  \begin{align*}
+   A &=b\cdot h =
+      6\cdot10^{-8}\unit{m}\times 2\cdot10^{-7}\unit{m} =
+      12\cdot 10^{-15}\unit{m}^2 =
+      1,2\cdot 10^1\cdot 10^{-15}\unit{m}^2 =
+      1,2\cdot 10^{-14}\unit{m}^2
+  \end{align*}
+  Com'è possibile vedere, utilizzando le note proprietà delle potenze, 
+  si riesce ad eseguire l'operazione in maniera molto agevole.
+ \end{esempio}
+ \begin{esempio}
+  Trasforma in notazione scientifica e calcola
+  $\displaystyle{\frac{3000:6\text{ milioni}}{5000\cdot0,000002}}$.
+  \begin{align*}
+   \frac{3000:6\text{ milioni}}{5000\cdot0,000002}&=\frac{3\cdot10^3:
+     (6\cdot 10^6)}{5\cdot10^3\cdot(2\cdot10^{-6})}
+    =\frac{3:6\cdot10^{-3}}{5\cdot2\cdot 10^{-3}}
+    =\frac{0,5}{10}\cdot10^{-3+3}
+    = 0,05\cdot10^0 = 5\cdot10^{-2}
+  \end{align*}
+ \end{esempio}
+\end{exrig}
+
+% \ovalbox{\risolvii \ref{ese:3.61}, \ref{ese:3.62}, \ref{ese:3.63}, 
+% \ref{ese:3.64}, \ref{ese:3.65}, \ref{ese:3.66}, \ref{ese:3.67}, 
+% \ref{ese:3.68}, \ref{ese:3.69}, \ref{ese:3.70}, \ref{ese:3.71}}
+
+\subsection{Ordine di grandezza}
+
+Spesso, nel trattare i numeri `molto grandi' o `molto piccoli', non è 
+importante conoscere la misura con precisione, ma basta conoscere 
+``quanto è grande'', cioè l'entità della sua grandezza. 
+Per fare ciò si introduce il seguente concetto.
+
+\begin{definizione}
+Dato un numero scritto in forma scientifica, si definisce 
+\emph{ordine di grandezza} (abbreviato con la sigla o.d.g.),
+la potenza di~$10$.
+\end{definizione}
+
+\begin{procedura}
+Determinare l'ordine di grandezza di un numero:
+\begin{enumeratea}
+\item scrivi il numero in notazione scientifica~${k\cdot10^n}$
+\item l'ordine di grandezza è~$10^{n}$.
+\end{enumeratea}
+\end{procedura}
+
+% \newpage
+
+\begin{exrig}
+ \begin{esempio}
+Determinare l'ordine di grandezza dei numeri~0,000074 e~47000000000.
+
+Scriviamo dapprima i numeri in notazione scientifica:
+\[0,000074=7,4\cdot 10^{-5}\text{ e }47000000000=4,7\cdot 10^{10}.\]
+L'o.d.g. del primo numero è~$10^{-5}$.
+L'o.d.g del secondo numero è~$10^{10}$.
+ \end{esempio}
+\end{exrig}
+
+% \ovalbox{\risolvii \ref{ese:3.72}, \ref{ese:3.73}, \ref{ese:3.74}}
+
+\section{Rapporto, percentuale, proporzioni}
+\label{sec:razionali_rapporto}
+
+\subsection{Rapporto}
+
+Spesso un dato preso da solo non dà molte informazioni. Sapere che in una 
+scuola sono iscritte 400 femmine non dice molto. Diversa è la situazione se 
+conosciamo anche qual è il numero complessivo degli alunni.
+
+\begin{minipage}{.49\textwidth}
+ Femmine = 400; \quad Iscritti = 1200
+ 
+ In questo caso le femmine sono una minoranza: c'è una femmina ogni 3 
+iscritti. Questa informazione si può ottenere calcolando il rapporto tra le 
+femmine e il totale:
+\[\frac{Femmine}{Iscritti} = \frac{400}{1200} = \frac{1}{3} \approx 0,333\]
+\end{minipage}
+\begin{minipage}{.49\textwidth}
+ Femmine = 400; \quad Iscritti = 600
+ 
+ In questo caso le femmine sono una maggioranza: ci sono 2 femmine ogni 3 
+iscritti. Questa informazione si può ottenere calcolando il rapporto tra le 
+femmine e il totale:
+\[\frac{Femmine}{Iscritti} = \frac{400}{600} = \frac{2}{3} \approx 0,666\]
+\end{minipage}\\
+
+Spesso il rapporto tra due valori è più interessante dei valori presi 
+singolarmente. 
+Quando il rapporto è tra due grandezze fisiche spesso si 
+ottiene una nuova grandezza:
+\begin{itemize}
+ \item Rapporto tra massa e volume dà la densità: 
+ \(\dfrac{massa}{volume}=densità\)
+ \item Rapporto tra spazio e tempo dà la velocità: 
+ \(\dfrac{spazio}{tempo}=velocità\)
+ \item Rapporto tra l'aumento di velocità e il tempo: 
+ \(\dfrac{aumento di velocità}{tempo}=accelerazione\)
+ \item \dots
+\end{itemize}
+
+\subsection{Proporzioni}
+
+Quando abbiamo due rapporti uguali: \(\dfrac{a}{b} = \dfrac{c}{d}\) diremo 
+che i quattro numeri \(a,~b,~c,~d\) sono in proporzione. Altra notazione 
+per le proporzioni è quella che indica le divisioni con i duepunti: ``:'':
+\(a:b=c:d\).
+
+I due numeri che si trovano al centro si chiamano \emph{medi} e gli altri 
+due si dicono \emph{estremi}.
+
+La proprietà fondamentale delle proporzioni:
+
+\begin{teorema}
+ In una proporzione, il prodotto dei \emph{medi} è uguale al prodotto 
+degli \emph{estremi} (detto anche \emph{prodotto incrociato}):
+\[\dfrac{a}{b} = \dfrac{c}{d} \sLRarrow a \cdot d = b \cdot c\]
+\end{teorema}
+
+Da questa proprietà possiamo ricavare le formule per calcolare un medio o 
+un estremo:
+\[a = \frac{b \cdot c}{d} \quad \text{ e } \quad 
+  b = \frac{a \cdot d}{c}\]
+  
+Un problema che ha collegamenti in altri ambiti della matematica riguarda l 
+proporzioni continue.
+
+\begin{definizione}
+ Si dice \emph{continua} una proporzione che ha i medi uguali:
+ \[a : b = b : c\]
+\end{definizione}
+
+In questo caso la proprietà fondamentale diventa:
+\[b^2 = a \cdot c\]
+da cui si ricava:
+\[b = \sqrt{a \cdot c} \quad \text{ e } \quad a = \frac{b^2}{c}\]
+
+\subsection{Percentuale}
+
+Il rapporto è, di solito, un numero con la virgola e 
+quando è realizzato tra una parte e il tutto, come negli esempi precedenti, 
+il rapporto è compreso tra zero e uno. Dato che le persone normali provano 
+un certo fastidio per i numeri con la virgola sono state inventate le 
+percentuali che sono date dal rapporto moltiplicato per 100 e seguito dal 
+simbolo ``\%''. Sempre riferendoci all'esempio precedente:
+\[\frac{1}{3} \approx 0,33 = 33\% \qquad 
+  \frac{2}{3} \approx 0,66 = 66\%\]
+Dire il~10\% o dire~0,1 è lo stesso, 
+dire~25\% o dire~0,25 è lo stesso, \dots
+
+\begin{definizione}
+ La \emph{percentuale} è il rapporto tra due grandezze moltiplicato per 100.
+\end{definizione}
+
+\begin{esempio}
+ Se ti viene proposto uno sconto di~10€ su un oggetto che costa~84€ che 
+percentuale di sconto ti viene applicata?
+\[sconto percento = \frac{sconto}{prezzointero}=\frac{10}{84} \approx
+  0,119 \approx 12\%\]
+\end{esempio}
+
+Dalla formula \(perc = \dfrac{parte}{totale}\) si possono ricavare le 
+formule inverse: 
+\[totale = \dfrac{parte}{perc} \quad \text{ e } \quad 
+  parte = totale \cdot perc\]
+
+
+\section{Problemi con le frazioni}
+\label{sec:razionali_problemi}
+
+Vediamo ora come affrontare problemi che coinvolgono frazioni.
+
+\subsection{Problemi diretti}
+Nei problemi diretti si conosce il valore di una grandezza e se ne deve 
+calcolare la parte che corrisponde a una frazione. 
+In questo caso basta moltiplicare la frazione per la grandezza intera.
+
+\begin{exrig}
+ \begin{esempio}
+Una pasticceria produce~568 cornetti a settimana: i~$3/4$ sono alla 
+crema,~$1/8$ sono al cioccolato e~$1/8$ alla marmellata. 
+Quanti cornetti di ciascun tipo produce?
+
+Per risolvere il problema occorre calcolare la parte che corrisponde a 
+ciascuna frazione:
+
+\begin{itemize*}
+\item cornetti alla crema:~$\dfrac{3}{4}\cdot 568 =426$
+\item cornetti al cioccolato:~$\dfrac{1}{8}\cdot 568 =71$
+\item cornetti alla marmellata:~71.
+\end{itemize*}
+ \end{esempio}
+\end{exrig}
+
+\subsection{Problemi inversi}
+
+Nei problemi inversi si conosce il valore numerico di una frazione di una 
+certa grandezza si deve calcolare il valore dell'intera grandezza.
+In questo caso occorre dividere il valore numerico dato per la frazione, 
+si ottiene così l'intero.
+
+\begin{exrig}
+ \begin{esempio}
+Mario ha speso~\officialeuro\ 21 che corrispondono ai~$3/5$ della somma 
+che possedeva. Quanto possedeva?
+
+In questo problema si sa che \officialeuro\ 21 corrispondono ai~$3/5$ della 
+somma da cercare.
+È sufficiente dividere~21 per la frazione:
+\officialeuro\ 21~$\displaystyle:\frac{3}{5}=$ \officialeuro\ 
+21$\cdot\dfrac{5}{3}=$ \officialeuro\ 35.
+ \end{esempio}
+
+ \begin{esempio}
+Giuseppe possiede \officialeuro\ 150. Se spende i~$3/5$ della somma 
+posseduta e 
+poi i~$2/3$ della somma rimanente, quanto gli rimane?
+
+Per risolvere il problema si può procedere in più modi.
+
+Calcoliamo prima i~$3/5$ di~150, cioè \officialeuro\ 150$\cdot\frac{3}{5}=$ 
+\officialeuro\ 90.
+Quindi la prima volta Giuseppe spende \officialeuro\ 90, perciò gliene 
+rimangono~60. La seconda volta spende i~$2/3$ di \officialeuro\ 60, 
+cioè \officialeuro\ 60$\frac{2}{3}=$ \officialeuro\ 40. In tutto ha speso
+\officialeuro\ 90~$+$ \officialeuro\ 40~$=$ \officialeuro\ 130, gli 
+rimangono \officialeuro\ 20.
+
+Un altro modo per risolvere il problema è tenere conto che,
+se la prima volta ha speso i~$\frac{3}{5}$ della somma che possedeva,
+significa che gli rimane la frazione~$1-\frac{3}{5}=\frac{2}{5}$.
+La seconda volta spende i~$\frac{2}{3}$ dei~$\frac{2}{5}$, cioè~$\frac{2}{3}
+\cdot\frac{2}{5}=\frac{4}{15}$.
+In tutto ha speso la frazione
+\[\frac{3}{5}+\frac{4}{15}=\frac{3\cdot3+4}{15}=\frac{13}{15},\]
+ gli rimane perciò la frazione~$\frac{2}{15}$, pertanto gli rimangono 
+ \officialeuro\ 150$\cdot\frac{2}{15}=$ \officialeuro\ 20.
+ \end{esempio}
+\end{exrig}
+
+% \ovalbox{\risolvii \ref{ese:3.75}, \ref{ese:3.76}, \ref{ese:3.77}, 
+% \ref{ese:3.78}}
+
 
 \section{Un po' di  storia}
-\label{sec:razionali_origine}
 
 Quando si deve dividere una certa grandezza o totalità in un certo numero di 
 parti uguali non sempre sono sufficienti i numeri interi per rappresentare 
@@ -662,17 +1074,23 @@ tabella che dà la scomposizione in frazioni unitarie delle frazioni del
 tipo~$\frac{2}{n}$, con~$n$ dispari: la frazione~$\frac{2}{43}$
 è rappresentata come somma di frazioni unitarie nel seguente modo:
 
-\[\frac{2}{43}=\frac{1}{42}+\frac{1}{86}+\frac{1}{129}+\frac{1}{301}.\]
-\begin{inaccessibleblock}[Figura: L'occhio di Horus.]
-\begin{wrapfigure}{r}{0pt}
-\input{\folder lbr/fig001_horus.pgf}
-\end{wrapfigure}
-\end{inaccessibleblock}
+\begin{minipage}{.49\textwidth}
+\[\frac{2}{43}=\frac{1}{42}+\frac{1}{86}+\frac{1}{129}+\frac{1}{301}\]
 
-Alcune unità frazionarie più comuni venivano indicate con le parti dell'occhio 
+ Alcune unità frazionarie più comuni venivano indicate con le parti 
+dell'occhio 
 di Horus; secondo la leggenda Horus, nella lotta contro lo zio Seth, 
-reo di avergli ucciso il padre, perse un occhio le cui parti vennero ritrovate 
+reo di avergli ucciso il padre, perse un occhio le cui parti vennero 
+ritrovate 
 e ricomposte dal dio Toth a meno di una piccola parte.
+\end{minipage}
+\begin{minipage}{.49\textwidth}
+\begin{inaccessibleblock}[Figura: L'occhio di Horus.]
+% \begin{wrapfigure}{r}{0pt}
+\begin{center} \input{\folder lbr/fig001_horus.pgf} \end{center}
+% \end{wrapfigure}
+\end{inaccessibleblock}
+\end{minipage}
 
 I Romani fecero poco uso dei numeri frazionari; si limitarono a considerare
 le parti delle misure in uso che venivano divise in~12, 24, 36, 48\ldots 
@@ -1645,252 +2063,6 @@ Pertanto,~$0^{-n}$ è una scrittura priva di significato.
 
 \section{Notazione scientifica e ordine di grandezza}
 \label{sec:03_ordinedigrandezza}
-
-Le discipline scientifiche quali la fisica, la biologia, l'astronomia etc,
-si trovano spesso a doversi confrontare con misurazioni di grandezze espresse 
-da numeri molto grandi. Per esempio:
-
-\begin{itemize*}
-\item il raggio della Terra è circa~$6\,400\,000\unit{m}$
-\item la velocità della luce nel vuoto è~$299\,790\,000\unit{m/s}$
-\item un globulo rosso ha il diametro di~$0,000007\unit{m}$.
-\end{itemize*}
-
-I primi due numeri sono `molto grandi', mentre l'ultimo è `molto piccolo' e 
-operare con numeri simili, non è affatto semplice.
-
-Per renderci conto di ciò, consideriamo un rettangolo di dimensioni
-$b =~0,00000006\unit{m}$ e~$h =~0,0000002\unit{m}$ e calcoliamone l'area:
-\[A=b\cdot h=0,00000006\cdot0,0000002=0,000000000000012.\]
-
-\begin{center}
-\input{\folder lbr/fig032_rett.pgf}
-\end{center}
-
-Come si può notare, per scrivere il risultato di un'operazione tra due numeri 
-in questo caso `molto piccoli', è necessario fare particolare attenzione in 
-quanto, per l'eccessiva quantità di cifre decimali, è facile commettere degli 
-errori.
-
-Per risolvere questo problema, si preferisce utilizzare una scrittura compatta 
-che permette di scrivere questo tipo di numeri in forma più agevole.
-Una tale scrittura prende il nome di \emph{notazione scientifica}.
-
-\begin{definizione}
-Un numero~$\alpha$ è scritto in \emph{notazione scientifica} se
-si presenta nella forma:
-\[\alpha=k\cdot10^n,\] 
-dove~$k$ è un numero decimale maggiore o uguale a~$1$ e minore di~$10$ e~$n$ 
-è un numero intero.
-\end{definizione}
-
-\begin{exrig}
- \begin{esempio}
-I numeri~$3,5\cdot10^7$ e~$8,9\cdot10^{-5}$ sono scritti in notazione 
-scientifica, mentre i numeri~$0,5\cdot10^3$ e~$10,3\cdot 10^{-8}$ non sono 
-scritti in notazione scientifica in quanto il numero davanti alla potenza 
-di~10 nel primo caso è~0,5 che è minore di~1, nel secondo caso è~10,3 che è 
-maggiore di~10.
- \end{esempio}
-\end{exrig}
-
-\subsection{Come trasformare un numero in notazione scientifica}
-Consideriamo la misura del diametro del globulo rosso, 
-ovvero~$0,000007\unit{m}$.
-Per esprimere questa misura in notazione scientifica basta considerare la sua 
-frazione generatrice, ovvero:
-\[0,000007\unit{m}=7\cdot\frac{1}{1000000}\unit{m}=7\cdot10^{-6}\unit{m}.\]
-
-Allo stesso modo il numero~0,000000026 viene scritto in notazione scientifica 
-come segue:
-\[0,000000026=2,6\cdot\frac{1}{100000000}=2,6\cdot\frac{1}{10^8}=2,6\cdot10^{-8}.\]
-Si osservi che in questo secondo caso abbiamo preso in considerazione il 
-valore~2,6 anziché~26, in quanto il numero~$k$ deve essere minore di~10.
-
-Consideriamo ora la misura del raggio della Terra, ovvero~$6\,400\,000\unit{m}$,
-la sua espressione in notazione scientifica sarà:~$6,4\cdot10^6$.
-
-Allo stesso modo il numero~$340\,000\,000\,000$ viene scritto in notazione 
-scientifica~$3,4\cdot10^{11}$.
-Si osservi che in questo secondo caso abbiamo preso in considerazione il 
-valore~3,4 anziché~34, in quanto, come si è già detto, il numero~$k$ deve 
-essere minore di~10.
-
-\osservazione A numeri `piccoli', corrisponde una potenza di dieci con 
-esponente negativo; 
-a numeri `grandi', corrisponde una potenza di dieci con esponente positivo.
-
-\begin{procedura}
-Scrivere un numero decimale in notazione scientifica:
-\begin{enumeratea}
- \item spostare la virgola di tanti posti in modo da avere una sola cifra
-  diversa da zero a sinistra;
- \item scrivere la moltiplicazione tra il numero ottenuto al passo precedente
-  e dieci elevato ad un esponente pari al numero si spostamenti della virgola 
-  effettuati se la virgola è stata spostata verso sinistra o elevato al suo 
-  opposto se la virgola è stata spostata verso destra.
-\end{enumeratea}
-\end{procedura}
-
-\begin{exrig}
- \begin{esempio}
- Scrivi 348\,000\,000\,000\,000 in notazione scientifica.
- Per comodità riscrivo il numero evidenziando l'attuale 
- posizione della virgola:~348\,000\,000\,000\,000,0.
-  \paragraph{Passo~$a$} Per ottenere un numero con una sola cifra diversa 
-   da zero a sinistra della virgola devo spostare la virgola di~14 posti 
-   verso sinistra;
-  \paragraph{Passo~$b$} ora scrivo la moltiplicazione tra il numero 
-   ottenuto:~$3,48$~e~10 elevato alla~14:~$3,48 \cdot 10^{14}$.
- \end{esempio}
- \begin{esempio}
-  Scrivi 0,0000340 in notazione scientifica.
-  \paragraph{Passo~$a$} Per ottenere un numero con una sola cifra diversa 
-   da zero a sinistra della virgola devo spostare la virgola di~5 posti 
-   verso destra;
-  \paragraph{Passo~$b$} ora scrivo la moltiplicazione tra il numero 
-   ottenuto:~$3,40$~e~10 elevato alla~$-5$:~$3,40 \cdot 10^{-5}$.
- \end{esempio}
- \begin{esempio}
-  Riprendendo il problema della lamina rettangolare, 
-  le sue dimensioni in notazione scientifica vengono scritte come:
-  $b=6\cdot10^{-8}\unit{m}, h=2\cdot10^{-7}\unit{m}$.
-  L'area sarà quindi:
-  \begin{align*}
-   A &=b\cdot h =\\
-     &= 6\cdot10^{-8}\unit{m}\times 2\cdot10^{-7}\unit{m} =\\
-     &=12\cdot 10^{-15}\unit{m}^2 =\\
-     &=1,2\cdot 10^1\cdot 10^{-15}\unit{m}^2 =\\
-     &=1,2\cdot 10^{-14}\unit{m}^2.
-  \end{align*}
-  Com'è possibile vedere, utilizzando le note proprietà delle potenze, 
-  si riesce ad eseguire l'operazione in maniera molto agevole.
- \end{esempio}
- \begin{esempio}
-  Trasforma in notazione scientifica e calcola
-  $\displaystyle{\frac{3000:6\text{ milioni}}{5000\cdot0,000002}}$.
-  \begin{align*}
-   \frac{3000:6\text{ milioni}}{5000\cdot0,000002}&=\frac{3\cdot10^3:
-     (6\cdot 10^6)}{5\cdot10^3\cdot(2\cdot10^{-6})}\\
-   &=\frac{3:6\cdot10^{-3}}{5\cdot2\cdot 10^{-3}}\\
-   &=\frac{0,5}{10}\cdot10^{-3+3}\\
-   &= 0,05\cdot10^0\\
-   &=0,05\\
-   &=5\cdot10^{-2}.
-  \end{align*}
- \end{esempio}
-\end{exrig}
-
-% \ovalbox{\risolvii \ref{ese:3.61}, \ref{ese:3.62}, \ref{ese:3.63}, 
-% \ref{ese:3.64}, \ref{ese:3.65}, \ref{ese:3.66}, \ref{ese:3.67}, 
-% \ref{ese:3.68}, \ref{ese:3.69}, \ref{ese:3.70}, \ref{ese:3.71}}
-
-\subsection{Ordine di grandezza}
-
-Spesso, nel trattare i numeri `molto grandi' o `molto piccoli', non è 
-importante conoscere la misura con precisione, ma basta conoscere 
-``quanto è grande'', cioè l'entità della sua grandezza. 
-Per fare ciò si introduce il seguente concetto.
-
-\begin{definizione}
-Dato un numero scritto in forma scientifica, si definisce 
-\emph{ordine di grandezza} (abbreviato con la sigla o.d.g.),
-la potenza di~$10$.
-\end{definizione}
-
-\begin{procedura}
-Determinare l'ordine di grandezza di un numero:
-\begin{enumeratea}
-\item scrivi il numero in notazione scientifica~${k\cdot10^n}$
-\item l'ordine di grandezza è~$10^{n}$.
-\end{enumeratea}
-\end{procedura}
-
-% \newpage
-
-\begin{exrig}
- \begin{esempio}
-Determinare l'ordine di grandezza dei numeri~0,000074 e~47000000000.
-
-Scriviamo dapprima i numeri in notazione scientifica:
-\[0,000074=7,4\cdot 10^{-5}\text{ e }47000000000=4,7\cdot 10^{10}.\]
-L'o.d.g. del primo numero è~$10^{-5}$.
-L'o.d.g del secondo numero è~$10^{10}$.
- \end{esempio}
-\end{exrig}
-
-% \ovalbox{\risolvii \ref{ese:3.72}, \ref{ese:3.73}, \ref{ese:3.74}}
-
-\section{Problemi con le frazioni}
-\label{sec:03_problemi}
-
-\subsection{Problemi diretti}
-Nei problemi diretti si conosce il valore di una grandezza e se ne deve 
-calcolare la parte che corrisponde a una frazione. 
-In questo caso basta moltiplicare la frazione per la grandezza intera.
-
-\begin{exrig}
- \begin{esempio}
-Una pasticceria produce~568 cornetti a settimana: i~$3/4$ sono alla 
-crema,~$1/8$ sono al cioccolato e~$1/8$ alla marmellata. 
-Quanti cornetti di ciascun tipo produce?
-
-Per risolvere il problema occorre calcolare la parte che corrisponde a 
-ciascuna frazione:
-
-\begin{itemize*}
-\item cornetti alla crema:~$\dfrac{3}{4}\cdot 568 =426$
-\item cornetti al cioccolato:~$\dfrac{1}{8}\cdot 568 =71$
-\item cornetti alla marmellata:~71.
-\end{itemize*}
- \end{esempio}
-\end{exrig}
-
-\subsection{Problemi inversi}
-
-Nei problemi inversi si conosce il valore numerico di una frazione di una 
-certa grandezza si deve calcolare il valore dell'intera grandezza.
-In questo caso occorre dividere il valore numerico dato per la frazione, 
-si ottiene così l'intero.
-
-\begin{exrig}
- \begin{esempio}
-Mario ha speso~\officialeuro\ 21 che corrispondono ai~$3/5$ della somma 
-che possedeva. Quanto possedeva?
-
-In questo problema si sa che \officialeuro\ 21 corrispondono ai~$3/5$ della 
-somma da cercare.
-È sufficiente dividere~21 per la frazione:
-\officialeuro\ 21~$\displaystyle:\frac{3}{5}=$ \officialeuro\ 21$\cdot\dfrac{5}{3}=$ \officialeuro\ 35.
- \end{esempio}
-
- \begin{esempio}
-Giuseppe possiede \officialeuro\ 150. Se spende i~$3/5$ della somma posseduta e 
-poi i~$2/3$ della somma rimanente, quanto gli rimane?
-
-Per risolvere il problema si può procedere in più modi.
-
-Calcoliamo prima i~$3/5$ di~150, cioè \officialeuro\ 150$\cdot\frac{3}{5}=$ 
-\officialeuro\ 90.
-Quindi la prima volta Giuseppe spende \officialeuro\ 90, perciò gliene 
-rimangono~60. La seconda volta spende i~$2/3$ di \officialeuro\ 60, 
-cioè \officialeuro\ 60$\frac{2}{3}=$ \officialeuro\ 40. In tutto ha speso
-\officialeuro\ 90~$+$ \officialeuro\ 40~$=$ \officialeuro\ 130, gli 
-rimangono \officialeuro\ 20.
-
-Un altro modo per risolvere il problema è tenere conto che,
-se la prima volta ha speso i~$\frac{3}{5}$ della somma che possedeva,
-significa che gli rimane la frazione~$1-\frac{3}{5}=\frac{2}{5}$.
-La seconda volta spende i~$\frac{2}{3}$ dei~$\frac{2}{5}$, cioè~$\frac{2}{3}
-\cdot\frac{2}{5}=\frac{4}{15}$.
-In tutto ha speso la frazione
-\[\frac{3}{5}+\frac{4}{15}=\frac{3\cdot3+4}{15}=\frac{13}{15},\]
- gli rimane perciò la frazione~$\frac{2}{15}$, pertanto gli rimangono 
- \officialeuro\ 150$\cdot\frac{2}{15}=$ \officialeuro\ 20.
- \end{esempio}
-\end{exrig}
-
-% \ovalbox{\risolvii \ref{ese:3.75}, \ref{ese:3.76}, \ref{ese:3.77}, \ref{ese:3.78}}
 
 \section{Le percentuali}
 \label{sec:03_percentuali}
