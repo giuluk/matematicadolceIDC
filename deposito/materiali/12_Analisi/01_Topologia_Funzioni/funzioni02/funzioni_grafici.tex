@@ -1,0 +1,168 @@
+﻿% (c) 2017 Daniele Zambelli - daniele.zambelli@gmail.com
+% 
+% Tutti i grafici per il capitolo relativo alle funzioni_new
+% 
+
+\newcommand{\deffunzione}[4]{% 
+  % Definizione di funzione
+  \def \nomea{#1}
+  \def \nomeb{#2}
+  \def \nomec{#3}
+  \def \nomed{#4}
+  \disegno{
+    \shadedraw [shading=ball]
+      (0,0) circle [x radius=2, y radius=3, ball color=red!20, rotate=+20];
+    \draw [red!0, dashed]
+          [postaction={decoration={text along path, text={\nomeb},
+           text align={align=center}}, decorate}]
+          (-2.5,1) .. controls (-2,4) and (1,4) .. (2,1);
+    \shadedraw[
+      top color=yellow!70,
+      bottom color=red!70,
+      shading angle={45},
+      opacity=.5,
+      x radius=4, y radius=5] (0, 0) circle; 
+    \draw [red!0, dashed]
+          [postaction={decoration={text along path, text={\nomea},
+           text align={align=center}}, decorate}]
+      (-3.5,3) .. controls (-2,6) and (2,6) .. (3.5,3);
+    \shadedraw [shading=ball] (12,0) circle [x radius=1.6, y radius=2.4,
+                                           ball color=red!20, rotate=-20];
+    \draw [red!0, dashed]
+          [postaction={decoration={text along path, text={\nomed},
+           text align={align=center}}, decorate}]
+          (10.2,.5) .. controls (11,3.5) and (14,3.5) .. (14,.5);
+    \shadedraw[
+      top color=yellow!70,
+      bottom color=blue!70,
+      shading angle={45},
+      opacity=.5,
+      x radius=4, y radius=5] (12, 0) circle;
+    \draw [red!0, dashed]
+          [postaction={decoration={text along path, text={\nomec},
+           text align={align=center}}, decorate}]
+      (8.5,3) .. controls (10,6) and (14,6) .. (15.5,3);
+    \draw [|->, very thick] (0, 0) to [out=20, in=160,
+       edge node={node [sloped,above] {$f$}}] (12, 0);
+    \draw (-1, 2.824) to [out=20, in=160] (12.8, 2.26);
+    \draw (+1.1,-2.8) to [out=20, in=160] (11.2,-2.27);
+  }
+}
+
+\newcommand{\dueassivuoti}{% 
+  % Disegno di due assi paralleli
+  \disegno{
+    \assecontrattini{-12}{+12}{0}{\(x\)}
+    \assecontrattini{-12}{+12}{3}{\(y\)}
+    \foreach \x in {-12, ..., 11}{
+      \draw  (\x, 0) [below, font=\small] node {\x};
+      \draw  (\x, 3) [above, font=\small] node {\x};
+    }
+  }
+}
+
+\newcommand{\dueassi}[3]{% 
+  % Funzione rappresentata su due assi
+  \def \mix{#1} \def \max{#2} \def \funct{#3}
+  \disegno{
+    \assecontrattini{-12}{+12}{0}{\(x\)}
+    \assecontrattini{-12}{+12}{3}{\(y\)}
+    \foreach \x in {-12, ..., 11}{
+      \draw  (\x, 0) [below, font=\small] node {\x};
+      \draw  (\x, 3) [above, font=\small] node {\x};
+    }
+    \foreach \x / \y in {\mix, ..., \max}{
+      \draw [->] (\x, 0) to [out=90, in=270] (\funct, 3);
+    }
+  }
+}
+
+\newcommand{\puntonelpc}[2]{
+  % Punto che rappresenta la relazione tra argomento e risultato 
+  % di una funzione.
+  \def \argomento{#1} \def \risultato{#2}
+  \disegno{
+    \rcomvar{-7}{+7}{-3}{+10}{gray!50, very thin, step=1}
+            {argomento}{risultato}
+    \draw [dashed, red!50!black] (\argomento, \risultato) --
+      (0, \risultato) node [left, blue!50!black] {$f(x)$};
+    \draw [dashed, blue!50!black] (\argomento, \risultato) --
+      (\argomento, 0) node [below, red!50!black] {$x$};
+    \filldraw [Maroon!50!black] (\argomento, \risultato) circle (1.5pt)
+      node [above] {P(arg; ris)};
+  }
+}
+
+\newcommand{\graficoa}{% Alcuni punti del grafico di una funzione.
+  \disegno{
+    \rcom{-5}{+7}{-10}{+10}{gray!50, very thin, step=1}
+    \foreach \x in {-3,...,6}
+      \filldraw [Blue!50!black] (\x, -2*\x+3) circle (2pt);
+  }
+}
+
+\newcommand{\graficob}{% Grafico di una funzione con punti evidenziati.
+  \disegno{
+    \graficoxy{-5}{+7}{-10}{+10}{-2*x+3}
+    \foreach \x in {-3,...,6}
+      \filldraw [Blue!50!black] (\x, -2*\x+3) circle (2pt);
+  }
+}
+
+
+\newcommand{\intervallimonotonia}{% Interv. di monotonia di una funzione.
+  \disegno{
+    \graficoxy{-10}{+10}{-10}{+10}{.03*x**3-.2*x**2-x}
+    \draw [Maroon!50!black] (-1.8, 1) -- (-1.8, 0) node [below] {$a$};
+    \draw [Maroon!50!black] (6.25, -6.8) -- (6.25, 0) node [above] {$b$};
+  }
+}
+
+
+% \newcommand{\graficoxy}[5]{  % Grafico di una funzione.
+%   % Esempio di chiamata:
+%   %% \disegno{\graficoxy{-7}{+7}{-11}{+10}{2*x+3}
+%   \def \grxmi{#1}
+%   \def \grxma{#2}
+%   \def \grymi{#3}
+%   \def \gryma{#4}
+%   \def \funzione{#5}
+%   \pgfmathparse{\grxmi-.3)} \let\grxxmi\pgfmathresult
+%   \pgfmathparse{\grxma+.3)} \let\grxxma\pgfmathresult
+%   \pgfmathparse{\grymi-.3)} \let\gryymi\pgfmathresult
+%   \pgfmathparse{\gryma+.3)} \let\gryyma\pgfmathresult
+%     \rcom{\grxmi}{\grxma}{\grymi}{\gryma}{gray!50, very thin, step=1}
+%     \tkzInit[xmin=\grxxmi,xmax=\grxxma,ymin=\gryymi,ymax=\gryyma]
+%     \tkzFct[domain=\grxxmi:\grxxma, ultra thick, color=Maroon!50!black]
+%            {\funzione}
+% }
+
+
+%     \foreach \pi in {
+%     (-3, 13), (-2, 6), (-1, 1), (0, -2), (1, -3), (2, -2), (3, 1), 
+%     (4, 6), (5, 13),
+%     (-2.5, 9.25), (-1.5, 3.25), (-0.5, -0.75), (0.5, -2.75), 
+%     (1.5, -2.75), (2.5, -0.75), (3.5, 3.25), (4.5, 9.25) 
+%     }
+%     \filldraw [Maroon!50!black] \pi circle (1.5pt);
+    
+    
+% 
+% \clip[draw] (0.5,0.5) circle (.6cm);
+% 
+
+% \newcommand{\micx}[6]{% 
+%   % interno del microscopio posto sull'asse x.
+%   \def \basexa{#1} \def \basexb{#2} \def \basey{#3}
+%   \def \xa{#4}     \def \xb{#5}     \def \yab{#6}
+%   \draw (\basexa, \basey) -- (\basexb, \basey);
+%   \fill [Cyan!50]  (\xa, \yab) -- (\xa, \basey) -- 
+%                    (\xb, \basey) -- (\xb, \yab) -- cycle;
+%   \draw [dashed] (\xa, \yab) -- (\xa, \basey) 
+%         node [below, xshift=-1mm] {$x_0$};
+%   \draw [dashed] (\xb, \yab) -- (\xb, \basey) 
+%         node [below, xshift=+2.5mm] {$x_0 + \epsilon$};
+% }
+%   \draw [thick, color=Red!50!black] (pb |- pb) -- (pb |- pa)
+%         node [midway, right] {$df(x)$};
+% }
