@@ -1,79 +1,31 @@
-## Matematica dolce
+# Matematica Dolce per IDC
 
-*Testo di matematica polimorfo per le scuole di secondo grado*
+## Premessa
+
+ Questo progetto **NON** nasce per offrire un'alternativa a [**Matematica Dolce**](http://www.matematicadolce.it), ma come una versione _"brandizzata"_ per la scuola dove lavoro. Dato che ho apportato alcune modifiche le ho rilasciate su GitHub nel rispetto di quanto previsto dalla licenza.
+
+ Per qualsiasi richiesta e informazione su [**Matematica Dolce**](http://www.matematicadolce.it) si consiglia di far riferimento al progetto originale ideato e coordinato dal prof. Daniele Zambelli.
 
 ## Origine
 
-Questo lavoro è partito da Matematica $C^3$ il testo libero edito da
+Nel 2010 venne rilasciata, sotto licenza _Creative Commons_, la prima versione di **Algebra 1** un manuale di Matematica destinato alle classi prime (scuola secondaria di 2° grado) e portato avanti in maniera collaborativa da decine di insegnanti sotto il coordinamento del prof. Antonio Bernardo.
 
-[matematicamente.it](www.matematicamente.it)
+Per diversi anni ho usato i manuali del progetto [**Matematica C3**](https://www.matematicamente.it/manuali-scolastici/) in classi di biennio di un istituto professionale e ho assistito al loro sviluppo dalle prime _acerbe_ versioni, probabilmente scritte in OpenOffice, fino al porting in LaTex di Dimitrios Vrettos.
 
-Dopo alcuni anni di uso nel liceo economico sociale e nel liceo classico, 
-il testo si sta diffondendo anche ad altri indirizzi scolastici. 
-Così il progetto è stato ristrutturato in modo da facilitare la realizzazione di testi diversi a partire da un deposito di materiale. 
+A seguito di un _fork_, il prof. Daniele Zambelli avvia il progetto **Matematica Dolce** grazie al quale porta ordine nel corposo materiale e completa l'opera con i volumi del secondo biennio e quinto anno.
 
-## Collaborazione
-
-Perché questo progetto non muoia c'è bisogno anche del tuo aiuto!
-
-Per vedere come è possibile collaborare visita il 
-[wiki](https://bitbucket.org/zambu/matematicadolce/wiki).
-
-In particolare le segnalazioni di errori e le proposte di miglioramento
-possono essere fatte partendo dalla pagina:
-[issues](https://bitbucket.org/zambu/matematicadolce/issues)
-compilando il form che si apre cliccando sul pulsante in alto a destra: 
-*create issue*.
-
-## Descrizione
-
-Si può comporre il proprio testo elencando in un file .tex i suoi 
-capitoli. 
-Il contenuto di ogni capitolo si trova nella directory *chap*. 
-La sintassi è abbastanza semplice e 
-lo si può fare partendo da un testo già funzionante ad esempio: 
-*m_d_1_les.tex*.
-
-Una volta composto il proprio testo basta dare il comando: 
-*creapdf.py <nome_del_testo>* 
-(o utilizzare il proprio compilatore LaTeX) 
-per ottenere il testo in formato *.pdf*.
-
-Chiunque abbia materiale, idee, tempo da offrire per contribuire 
-all'opera, e anche osservazioni e critiche, è pregato di contattare 
-il coordinatore del progetto all'indirizzo sotto riportato.
-
-## Download
-
-Dalla sezione Download 
-(icona a nuvoletta, barra a sinistra ultima in basso)
-si possono scaricare sia i testi in formato pdf (quando pronti)
-sia tutto il sorgente in formato Latex per modificare e compilare
-un testo sul proprio computer.
-
-## Link
-
-I precedenti volumi sono reperibili da:
-
-[Algebra dolce 1](https://bitbucket.org/zambu/mc3_a1_dolce_2ed/)
-[Algebra dolce 2](https://bitbucket.org/zambu/mc3_a2_dolce_2ed/)
-[Algebra dolce 3](https://bitbucket.org/zambu/mc3_a2_dolce_1ed/)
+In virtù delle opportunità offerte dal suo progetto, nel Settembre 2018 ho deciso di assemblare dei manuali di Matematica per alcuni classi di biennio della scuola nella quale lavoro condividendo il risultato su GitHub nell'Ottobre dello stesso anno.
 
 ## Licenza
+[![Licenza Creative Commons](https://i.creativecommons.org/l/by-sa/3.0/it/88x31.png)](http://creativecommons.org/licenses/by-sa/3.0/it/)
 
-Tutto il materiale di questo progetto è rilasciato sotto licenza: 
-CC-BY-SA.
+Quest'opera è distribuita con Licenza [Creative Commons Attribuzione - Condividi allo stesso modo 3.0 Italia](http://creativecommons.org/licenses/by-sa/3.0/it/).
 
-## Coordinatore del progetto
-
-Indirizzo per comunicare con il coordinatore del progetto:
-daniele.zambelli@gmail.com
+## Contatti
+e-mail: giuseppelucarelli [AT] pm [DOT] com
 
 ---
 
-Con la speranza che questo testo possa 
-contribuire a far amare la matematica
+> We’re killing people’s interest in circles for god’s sake!
 
-Daniele
-
-
+Paul Lockhart
