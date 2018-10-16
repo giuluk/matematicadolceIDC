@@ -1,6 +1,8 @@
 ## Aggiunte personalizzate
 .DS_Store
 TODO
+CHANGELOG
+*.gnuplot
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
