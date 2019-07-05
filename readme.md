@@ -2,9 +2,9 @@
 
 ## Premessa
 
- Questo progetto **NON** nasce per offrire un'alternativa a [**Matematica Dolce**](http://www.matematicadolce.it), ma come una versione _"brandizzata"_ per la scuola dove lavoro. Dato che ho apportato alcune modifiche le ho rilasciate su GitHub nel rispetto di quanto previsto dalla licenza.
+ Questo progetto **NON** nasce per offrire un'alternativa a [**Matematica Dolce**](http://www.matematicadolce.eu), ma come una versione _"brandizzata"_ per la scuola dove lavoro. Dato che ho apportato alcune modifiche le ho rilasciate su GitHub nel rispetto di quanto previsto dalla licenza.
 
- Per qualsiasi richiesta e informazione su [**Matematica Dolce**](http://www.matematicadolce.it) si consiglia di far riferimento al progetto originale ideato e coordinato dal prof. Daniele Zambelli.
+ Per qualsiasi richiesta e informazione su [**Matematica Dolce**](http://www.matematicadolce.eu) si consiglia di far riferimento al progetto originale ideato e coordinato dal prof. Daniele Zambelli.
 
 ## Origine
 
@@ -14,7 +14,7 @@ Per diversi anni ho usato i manuali del progetto [**Matematica C3**](https://www
 
 A seguito di un _fork_, il prof. Daniele Zambelli avvia il progetto **Matematica Dolce** grazie al quale porta ordine nel corposo materiale e completa l'opera con i volumi del secondo biennio e quinto anno.
 
-In virtù delle opportunità offerte dal suo progetto, nel Settembre 2018 ho deciso di assemblare dei manuali di Matematica per alcuni classi di biennio della scuola nella quale lavoro condividendo il risultato su GitHub nell'Ottobre dello stesso anno.
+In virtù delle opportunità offerte dal suo progetto, nel Settembre 2018 ho deciso di assemblare dei manuali di Matematica per alcune classi di biennio della scuola nella quale lavoro condividendo il risultato su GitHub nell'Ottobre dello stesso anno.
 
 ## Licenza
 [![Licenza Creative Commons](https://i.creativecommons.org/l/by-sa/3.0/it/88x31.png)](http://creativecommons.org/licenses/by-sa/3.0/it/)
