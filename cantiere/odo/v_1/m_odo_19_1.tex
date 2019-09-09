@@ -48,15 +48,15 @@
 % Variabili per questo volume
 %========================
 \newcommand{\editore}{Matematicamente.it}
-\newcommand{\serie}{Matematica $C^3$}
+\newcommand{\serie}{Matematica \(C^3\)}
 \newcommand{\titolo}{Matematica dolce 1 - ipss}     % MODIFICATO
 \newcommand{\pdftitolo}{Matematica dolce 1 - ipss}  % MODIFICATO
-\newcommand{\docvers}{\texttt{4.0.1}}
+\newcommand{\docvers}{\texttt{5.0.1}}
 \newcommand{\edizione}{2019}
 \newcommand{\Edizione}{Edizione}
-\newcommand{\tipo}{ (versione completa a colori)}
+\newcommand{\tipo}{ (versione completa)}
 \newcommand{\descr}{Testo per il primo biennio \protect\\
-                    della Scuola Secondaria di $II$ grado \\ \null
+                    della Scuola Secondaria di II grado \\ \null
                     istituto professionale \\       % MODIFICATO
                     servizi socio-sanitari}         % MODIFICATO
 \newcommand{\oggi}{23 giugno 2019}               % MODIFICATO
@@ -86,7 +86,6 @@
 \intestazione{\matdir 00_intestazioni/les/}{frontespizio}
 \intestazione{\matdir 00_intestazioni/les/}{colophon}
 \intestazione{\matdir 00_intestazioni/les/}{indice}
-%\intestazione{\matdir 00_intestazioni/les/}{prefazione}    % MODIFICATO
 \intestazione{\moddir 00_intestazioni/les/}{prefazione}     % MODIFICATO
 %..................................................
 %
@@ -94,6 +93,8 @@
 %
 \mainmatter
 \parte{\moddir 0_a_parti/}{part_01_1_d}                     % MODIFICATO
+\capitolo{\matdir 01_Logica/01_Insiemi_logica/ins01/}
+         {insiemi}
 \capitolo{\matdir 02_Insiemi_numerici/01_Numeri_naturali/nat01/}
          {naturali}
 \capitolo{\matdir 02_Insiemi_numerici/02_Numeri_interi/int01/}
@@ -110,8 +111,9 @@
 %
 % Secondo tema: Relazioni e Funzioni
 %
-\mainmatter
 \parte{\moddir 0_a_parti/}{part_02_1_d}                       % MODIFICATO
+\capitolo{\matdir 01_Logica/02_Relazioni/rel01/}
+         {relazioni}
 \capitolo{\matdir 04_Equazioni/01_Eq_grado_1/eq01/}
          {equazioni}
 \capitolo{\matdir 04_Equazioni/02_Diseq_grado_1/dis01/}
@@ -125,17 +127,17 @@
          {fondamenti1}
 \capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/tri01/}
          {triangoli1}
+\capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/parall01/}
+         {parallelismo1}
+\capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/quadr01/}
+         {quadrilateri1}
 % ..................................................
 %
 % Quarto tema: Dati e Previsioni
 %
-\parte{\matdir 0_a_parti/}{part_01_1_d}                        % DA MODIFICARE
+\parte{\moddir 0_a_parti/}{part_04_1_d}                        % MODIFICATO
 \capitolo{\matdir 14_Statistica/01_Statistica_descrittiva/stat01/}
          {statistica}
-\capitolo{\matdir 15_Probabilita/01_Calcolo_combinatorio/comb01/}
-         {calc_combinatorio}
-\capitolo{\matdir 15_Probabilita/02_Calcolo_probabilita/prob01/}
-         {probabilita}
 %..................................................
 %
 % Azzeramento numerazione capitoli
