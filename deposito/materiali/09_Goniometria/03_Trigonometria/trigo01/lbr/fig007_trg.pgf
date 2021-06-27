@@ -1,0 +1,23 @@
+% (c) 2012 Dimitrios Vrettos - d.vrettos@gmail.com
+
+\begin{tikzpicture}[x=9mm,y=9mm, font=\small]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at ($(A)+(0:4)$);
+\coordinate (C) at ($(A)+(90:3)$);
+
+\draw (A) node[below left]  {$A$} -- 
+      (B) node[below right] {$B$} node[midway,below]{$c$} -- 
+      (C) node[above left]  {$C$} node[midway,above]{$a$} --
+      (A)                         node[midway,left] {$b$};
+
+\tkzFillAngle[fill=LimeGreen, draw, size=.33](A,C,B)
+\tkzLabelAngle[pos=.6](A,C,B){$\gamma$}
+
+\tkzFillAngle[fill=LimeGreen, draw, size=.33](C,B,A)
+\tkzLabelAngle[pos=.6](C,B,A){$\beta$}
+
+\tkzMarkRightAngle[fill=LimeGreen, draw, size=.2](C,A,B);
+\tkzLabelAngle[pos=.4](B,A,C){$\alpha$}
+
+\end{tikzpicture}

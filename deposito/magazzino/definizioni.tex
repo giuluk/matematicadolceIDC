@@ -35,7 +35,7 @@
   \renewcommand{\folder}{#1}
   \graphicspath{{\folder}}
   \include{\folder #2}
-  \cleardoublepage
+  \cleardoublepage  % TODO non deve esserci tra intestazione e colophon!!!
 }
 
 % Crea un nuovo capitolo
@@ -51,6 +51,71 @@
 % Per contrassegnare e sostituire i blocchi inacessibili ai ciechi.
 \newenvironment{inaccessibleblock}[1][]{}{}
 
+\newcommand{\affiancati}[4]{% 2 minipage affiancate
+% Esempio di chiamata:
+% \affiancati{.48}{.48}{testo1}{testo2}
+  \def \larga{#1}
+  \def \largb{#2}
+%   \def \contenutoa{#3}
+%   \def \contenutob{#4}
+  \noindent\begin{minipage}{\larga\textwidth}
+    #3
+  \end{minipage}
+  \hfill
+  \begin{minipage}{\largb\textwidth}
+    #4
+  \end{minipage}
+}
+
+\newcommand{\affiancatic}[4]{% 2 minipage affiancate con il contenuto centrato
+% Esempio di chiamata:
+% \affiancati{.48}{.48}{testo1}{testo2}
+  \def \larga{#1}
+  \def \largb{#2}
+  \def \contenutoa{#3}
+  \def \contenutob{#4}
+  \noindent \begin{minipage}{\larga\textwidth}
+    \begin{center} \contenutoa \end{center}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{\largb\textwidth}
+    \begin{center} \contenutob \end{center}
+  \end{minipage}
+}
+
+% \newcommand{\affiancati}[4]{% 2 minipage affiancate
+% % \affiancati{.48}{.48}{testo1}{testo2}
+%   \def \larga{#1}
+%   \def \largb{#2}
+%   \def \contenutoa{#3}
+%   \def \contenutob{#4}
+%   \noindent\begin{minipage}{\larga\textwidth}
+%     \contenutoa
+%   \end{minipage}
+%   \hfill
+%   \begin{minipage}{\largb\textwidth}
+%     \contenutob
+%   \end{minipage}
+% }
+
+\newcommand{\segnoretta}[3]{% segno di un binomio di primo grado
+% \segnoretta{x - 4 = 0 \quad \Rightarrow \quad x = 4}
+%            {y = x - 4 \quad \rightarrow}
+%            {\segnicre{4}}
+  \def \ta{#1}
+  \def \tb{#2}
+  \def \segno{#3}
+ \begin{minipage}{.45\textwidth}
+  E.A.:~\(\ta\)
+ \end{minipage}
+ \begin{minipage}{.25\textwidth}
+  F.A.:~\(\tb\)
+ \end{minipage}
+ \begin{minipage}{.3\textwidth}
+  \segno
+ \end{minipage}
+}
+
 % % \usepackage{enumerate}
 % \usepackage{fancyhdr} % per intestazioni e pie di pagina
 % \setlength{\columnseprule}{1pt}
@@ -65,12 +130,22 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Nz}{\mathbb{N}^0}
+\newcommand{\Zz}{\mathbb{Z}^0}
+\newcommand{\Qz}{\mathbb{Q^0}}
 \newcommand{\A}{\mathbb{A}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\Rz}{\mathbb{R}^0}
+\newcommand{\Rp}{\mathbb{R}^+}
 \newcommand{\IR}{{}^*\hspace{-.12em}\mathbb{R}} % Iperreali
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\IC}{{}^*\hspace{-.12em}\mathbb{C}} % Ipercomplessi
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\effestar}{{}^*\hspace{-.15em}f}
+\newcommand{\fstar}[1][f]{{}^*\!#1}
+
+% \newcommand{\ID}{I.D.}
+\newcommand{\II}{I.I.}
 
 %--------------------------
 % varianti di lettere greche:
@@ -83,6 +158,7 @@
 % Delimitatori e parentesi:
 \newcommand{\tonda}[1]{\left( #1 \right)}
 \newcommand{\quadra}[1]{\left[ #1 \right]}
+\newcommand{\rquadra}[1]{\left] #1 \right[} % Parentesi quadra rovescia
 \newcommand{\graffa}[1]{\left \{ #1 \right \}}
 \newcommand{\abs}[1]{\left \lvert #1 \right \rvert}
 \newcommand{\modulo}[1]{\left| #1 \right|}
@@ -96,6 +172,7 @@
 \newcommand{\matrice}[2]{\tonda{\begin{array}{#1}#2\end{array}}}
 \newcommand{\vect}[1]{\overrightarrow{#1}}
 \newcommand{\punto}[2]{\tonda{#1;~#2}}
+\newcommand{\Deriv}[1]{\mathit{D}\quadra{#1}}
 
 %--------------------------
 % Intervalli:
@@ -108,12 +185,16 @@
 % simboli con l'aggiunta di uno spazio prima e dopo:
 \newcommand{\sand}{~ \wedge ~}
 \newcommand{\sor}{~ \vee ~}
+\newcommand{\scap}{~ \cap ~}
+\newcommand{\scup}{~ \cup ~}
 \newcommand{\sLarrow}{~ \Leftarrow ~}
 \newcommand{\sLRarrow}{~ \Leftrightarrow ~}
 \newcommand{\sRarrow}{~ \Rightarrow ~}
 \newcommand{\slarrow}{~ \leftarrow ~}
 \newcommand{\slrarrow}{~ \leftrightarrow ~}
 \newcommand{\srarrow}{~ \rightarrow ~}
+\newcommand{\stext}[1]{~~\text{#1}~~}
+\newcommand{\sstext}[1]{\quad\text{#1}\quad}
 
 %--------------------------
 % Operatori per le funzioni circolari e per gli Iperreali:
@@ -126,6 +207,36 @@
 \DeclareMathOperator{\Galassia}{Gal}       % Galassia
 \newcommand{\Gal}[1]{\Galassia \tonda{#1}} % Galassia di 
 
+%--------------------------
+% Soluzione di una disequazione
+
+\newcommand{\insiemesoluzione}[3]{% blocco relativo alla soluzione
+  \def \grafica{#1}
+  \def \predicati{#2}
+  \def \parentesi{#3}
+% Insieme soluzione: \\
+\noindent\begin{minipage}[t]{.29\textwidth}
+ \begin{center}
+  Forma grafica\\ %[-.5em]
+     \grafica
+  \vspace{.4em}
+ \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{.32\textwidth}
+  \begin{center}
+  Espressione con i predicati\\ [.9em]
+  \predicati
+%   \vspace{1em}
+ \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{.32\textwidth}
+ \begin{center}
+  Espressione con le parentesi\\ [.9em]
+  \parentesi
+%   \vspace{.8em}
+ \end{center}
+  \end{minipage}
+}
 
 %--------------------------
 % Elenco numerato. Esempio di chiamata: 
@@ -137,25 +248,52 @@
 }
 
 %--------------------------
+% Immagine realizzata con Tikz o presa da file 
+\newcommand{\image}[2]{% se è definita \tikzout esegue #1 altrimenti #2
+  % esempio: \image{\puntigrafico}{img/puntigrafico.png}
+  \ifx\tikzout\undefined
+    #1
+  \else
+    \includegraphics[scale=1]{#2}
+  \fi
+}
+
+%--------------------------
 % Centra un elemento utile nelle tabelle centra anche verticalmente: 
 \newcommand{\centra}[1]{\begin{center}#1\end{center}}
 
-%--------------------------
-% Per il testo di geometria (tratto da Geoetria Razionale C3): 
-\theoremstyle{plain} 
-% \newshadetheorem{postulato}{\thmcolor{Postulato}}[chapter]
-% \newshadetheorem{corollario}{\thmcolor{Corollario}}[chapter]
-% \newshadetheorem{proposizione}{\thmcolor{Proposizione}}[chapter]
-\newshadetheorem{corollario}[teorema]{Corollario}
-% \newshadetheorem{proposizione}[teorema]{Proposizione}
-
-%\newshadetheorem{legge}[teorema]{Legge}
-%\newshadetheorem{principio}[teorema]{Principio}
-%\newshadetheorem{procedura}[teorema]{Procedura}
-%\newshadetheorem{proprieta}[teorema]{Propriet\`a}
+% %--------------------------
+% % Per il testo di geometria (tratto da Geoetria Razionale C3): 
+% \theoremstyle{plain} 
+% % \newshadetheorem{postulato}{\thmcolor{Postulato}}[chapter]
+% % \newshadetheorem{corollario}{\thmcolor{Corollario}}[chapter]
+% % \newshadetheorem{proposizione}{\thmcolor{Proposizione}}[chapter]
+% \newshadetheorem{corollario}[teorema]{Corollario}
+% % \newshadetheorem{proposizione}[teorema]{Proposizione}
+% 
+% %\newshadetheorem{legge}[teorema]{Legge}
+% %\newshadetheorem{principio}[teorema]{Principio}
+% %\newshadetheorem{procedura}[teorema]{Procedura}
+% %\newshadetheorem{proprieta}[teorema]{Propriet\`a}
 
 \newcommand{\defintextsep}{\intextsep}
-
+% 
+% %--------------------------
+% % Nuovo stile di teoremi.
+% % Inserito in matsweetmem.cls
+% \newtcbtheorem[number within=chapter]
+% {newtheo}{Teorema}%
+% {colback=green!5, colframe=green!50!black, fonttitle=\bfseries,
+%  coltitle=blue!50!black, theorem style=plain}{th}
+% 
+% \newtcbtheorem[number within=chapter]{newdef}{Definizione}%
+% {colback=blue!5,colframe=blue!50!black,fonttitle=\bfseries,
+%  coltitle=violet!50!black, theorem style=plain}{def}
+% 
+% \newtcbtheorem[number within=chapter]{newoss}{Oservazione}%
+% {colback=violet!5,colframe=violet!50!black,fonttitle=\bfseries,
+%  coltitle=green!50!black, theorem style=plain}{oss}
+% 
 
 % \newtheorem{theorem}{Theorem}[section]
 % \newtheorem{proposizione}[theorem]{Proposizione}

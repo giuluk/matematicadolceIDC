@@ -60,6 +60,15 @@
   \draw [#5] [->] (\inizio) -- (\fine);
 }
 
+\newcommand{\freccia}[4]{
+  \def \pp{#1}
+  \def \pa{#2}
+  \def \poslabel{#3}
+  \def \value{#4}
+  \draw [-{Latex[length=2mm, width=1mm]}, black] \pp 
+    node[\poslabel]{\footnotesize \(\value\)} -- \pa; 
+}
+
 %--------------------------
 % Assi e piano cartesiano
 \newcommand{\assev}[4]{% Asse.
@@ -80,7 +89,8 @@
   \def \xma{#2}
   \def \posy{#3}
   \def \var{#4}
-  \draw [-{Stealth[length=2mm, open, round]}] (\xmi, \posy) -- (\xma, \posy);
+  \draw [-{Stealth[length=2mm, open, round]}] 
+        (\xmi-.3, \posy) -- (\xma+.3, \posy);
   \node [below] at (\xma, \posy) {\var};
 }
 
@@ -90,29 +100,67 @@
   \asse{#1}{#2}{#3}{\(x\)};
 }
 
-\newcommand{\assecontrattini}[4]{% Asse.
+% \newcommand{\assecontrattini}[4]{% Asse.
+%   % Esempio di chiamata:
+%   %% \disegno{\assecontrattini{-7}{+7}{0}{\(t\)}
+%   \def \xmi{#1}
+%   \def \xma{#2}
+%   \def \posy{#3}
+%   \def \var{#4}
+%   \draw[gray!50, very thin, step=1] 
+%        (\xmi, \posy-0.1) grid (\xma-1, \posy+0.1);
+%   \asse{#1}{#2}{#3}{#4};
+% }
+
+\newcommand{\assecontrattini}[4]{% Asse con trattini.
   % Esempio di chiamata:
-  %% \disegno{\assecontrattini{-7}{+7}{0}{\(t\)}
+  %% \disegno{\assecontrattini{-7}{+7}{0}{t}
   \def \xmi{#1}
   \def \xma{#2}
   \def \posy{#3}
   \def \var{#4}
-  \draw[gray!50, very thin, step=1] 
-       (\xmi, \posy-0.1) grid (\xma-1, \posy+0.1);
-  \asse{#1}{#2}{#3}{#4};
+  \foreach \x in {\xmi, ..., \xma}
+    \draw[very thin] (\x, \posy-0.1) -- (+\x, \posy+0.1);
+  \draw [-{Stealth[length=2mm, open, round]}] 
+        (\xmi-.3, \posy) -- (\xma+.3, \posy); 
+  \node [below] at (\xma+.3, \posy) {\(\var\)};
 }
 
 \newcommand{\segmentocontrattini}[3]{% Segmento con trattini.
   % Esempio di chiamata:
-  %% \disegno{\segmentocontrattini{-7}{+7}{0}
+  %% \disegno{\segmentocontrattini{-7}{+7}{0}}
   \def \xmi{#1}
   \def \xma{#2}
   \def \posy{#3}
-  \pgfmathsetmacro \endx{int(\xma-\xmi)}
-  \foreach \x in {0, 1, ..., \endx}
-    \draw[very thin] (\xmi+\x, \posy-0.1) -- (\xmi+\x, \posy+0.1);
+%   \pgfmathsetmacro \endx{int(\xma-\xmi)}
+  \foreach \x in {\xmi, ..., \xma}
+    \draw[very thin] (\x, \posy-0.1) -- (+\x, \posy+0.1);
   \draw [-] (\xmi-.3, \posy) -- (\xma+.3, \posy);
 }
+
+% \newcommand{\assecontrattini}[4]{% Asse.
+%   % Esempio di chiamata:
+%   %% \disegno{\assecontrattini{-7}{+7}{0}{\(t\)}
+%   \def \xmi{#1}
+%   \def \xma{#2}
+%   \def \posy{#3}
+%   \def \var{#4}
+%   \draw[gray!50, very thin, step=1] 
+%        (\xmi, \posy-0.1) grid (\xma-1, \posy+0.1);
+%   \asse{#1}{#2}{#3}{#4};
+% }
+% 
+% \newcommand{\segmentocontrattini}[3]{% Segmento con trattini.
+%   % Esempio di chiamata:
+%   %% \disegno{\segmentocontrattini{-7}{+7}{0}
+%   \def \xmi{#1}
+%   \def \xma{#2}
+%   \def \posy{#3}
+%   \pgfmathsetmacro \endx{int(\xma-\xmi)}
+%   \foreach \x in {0, 1, ..., \endx}
+%     \draw[very thin] (\xmi+\x, \posy-0.1) -- (\xmi+\x, \posy+0.1);
+%   \draw [-] (\xmi-.3, \posy) -- (\xma+.3, \posy);
+% }
 
 \newcommand{\rcomvar}[7]{% Riferimento Cartesiano Ortogonale Monometrico.
   % Esempio di chiamata:
@@ -138,22 +186,179 @@
   \rcomvar{#1}{#2}{#3}{#4}{#5}{\(x\)}{\(y\)}
 }
 
-\newcommand{\graficoxy}[5]{  % Grafico di una funzione.
+% \newcommand{\pianoxy}[4]{  % Grafico di una funzione.
+%   % Esempio di chiamata:
+%   %% \disegno{\pianoxy{-7}{+7}{-11}{+10}}
+%   \def \mix{#1}
+%   \def \max{#2}
+%   \def \miy{#3}
+%   \def \may{#4}
+%   \def \colore{#5}
+%   \def \funzione{#6}
+%   \rcom{\mix}{\max}{\miy}{\may}{gray!50, very thin, step=1}
+%   \tkzInit[xmin=\mix-0.3,xmax=\max+0.3,ymin=\miy-0.3,ymax=\may+0.3]
+% }
+
+\newcommand{\graficoxy}[6]{  % Grafico di una funzione.
   % Esempio di chiamata:
-  %% \disegno{\graficoxy{-7}{+7}{-11}{+10}{2*x+3}
-  \def \grxmi{#1}
-  \def \grxma{#2}
-  \def \grymi{#3}
-  \def \gryma{#4}
-  \def \funzione{#5}
-  \pgfmathparse{\grxmi-.3)} \let\grxxmi\pgfmathresult
-  \pgfmathparse{\grxma+.3)} \let\grxxma\pgfmathresult
-  \pgfmathparse{\grymi-.3)} \let\gryymi\pgfmathresult
-  \pgfmathparse{\gryma+.3)} \let\gryyma\pgfmathresult
-  \rcom{\grxmi}{\grxma}{\grymi}{\gryma}{gray!50, very thin, step=1}
-  \tkzInit[xmin=\grxxmi,xmax=\grxxma,ymin=\gryymi,ymax=\gryyma]
-  \tkzFct[domain=\grxxmi:\grxxma, ultra thick, color=Maroon!50!black]
+  %% \disegno{\graficoxy{-7}{+7}{-11}{+10}{blue!50!black}{2*x+3}}
+  \def \mix{#1}
+  \def \max{#2}
+  \def \miy{#3}
+  \def \may{#4}
+  \def \colore{#5}
+  \def \funzione{#6}
+  \rcom{\mix}{\max}{\miy}{\may}{gray!50, very thin, step=1}
+  \tkzInit[xmin=\mix-0.3,xmax=\max+0.3,ymin=\miy-0.3,ymax=\may+0.3]
+  \tkzFct[domain=\mix-0.3:\max+0.3, ultra thick, color=\colore]
          {\funzione}
+}
+
+\newcommand{\graficixy}[5]{  % Grafico di più funzioni funzione.
+  % Esempio di chiamata:
+  %% \disegno{
+  %%   \graficixy{0}{7}{0}{7}{{x-2}/blue, {x*x/2.}/red, {(x-2)**2/2.}/violet}
+  %% }
+  \def \mix{#1}
+  \def \max{#2}
+  \def \miy{#3}
+  \def \may{#4}
+  \def \funzcol{#5}
+  \rcom{\mix}{\max}{\miy}{\may}{gray!50, very thin, step=1}
+  \tkzInit[xmin=\mix-0.3,xmax=\max+0.3,ymin=\miy-0.3,ymax=\may+0.3]
+  \foreach \funzione/\colore in \funzcol{
+    \tkzFct[domain=\mix-0.3:\max+0.3, ultra thick, color=\colore]{\funzione}
+  }
+}
+
+\newcommand{\graficospezzato}[7]{  % Grafico di una funzione.
+  % Esempio di chiamata:
+  %% \disegno{\graficoxy{-7}{+7}{-11}{+10}{blue!50!black}{2*x+3}}
+  \def \mix{#1}
+  \def \max{#2}
+  \def \miy{#3}
+  \def \may{#4}
+  \def \colore{#5}
+  \def \funzione{#6}
+  \def \pezzi{#7}
+  \rcom{\mix}{\max}{\miy}{\may}{gray!50, very thin, step=1}
+  \tkzInit[xmin=\mix-0.3,xmax=\max+0.3,ymin=\miy-0.3,ymax=\may+0.3]
+  \foreach \mii/\mai in \pezzi{
+    \tkzFct[domain=\mii:\mai, ultra thick, color=\colore]{\funzione}}
+}
+
+\newcommand{\gnominonum}[5]{
+  % example:
+  % \disegno{\gnomino{0.7}{1.5}{gray!50}{blue!50!black}}
+  \def \xgno{#1}
+  \def \ygno{#2}
+  \def \colorline{#3}
+  \def \colorpoint{#4}
+  \def \shift{#5}
+  \draw [thin, dashed, \colorline] 
+        (\xgno, 0) 
+        node [below=\shift, \colorpoint] {\fontsize{5pt}{5pt}\(\xgno\)} -- 
+        (\xgno, \ygno) -- (0, \ygno) 
+        node [left, \colorpoint] {\fontsize{5pt}{5pt}\(\ygno\)};
+  \filldraw (\xgno, \ygno) [\colorpoint] circle(1.5pt);
+}
+
+% \newcommand{\graficoxy}[6]{  % Grafico di una funzione.
+%   % Esempio di chiamata:
+%   %% \disegno{\graficoxy{-7}{+7}{-11}{+10}{blue!50!black}{2*x+3}}
+%   \def \grxmi{#1}
+%   \def \grxma{#2}
+%   \def \grymi{#3}
+%   \def \gryma{#4}
+%   \def \colore{#5}
+%   \def \funzione{#6}
+%   \pgfmathparse{\grxmi-.3)} \let\grxxmi\pgfmathresult
+%   \pgfmathparse{\grxma+.3)} \let\grxxma\pgfmathresult
+%   \pgfmathparse{\grymi-.3)} \let\gryymi\pgfmathresult
+%   \pgfmathparse{\gryma+.3)} \let\gryyma\pgfmathresult
+%   \rcom{\grxmi}{\grxma}{\grymi}{\gryma}{gray!50, very thin, step=1}
+%   \tkzInit[xmin=\grxxmi,xmax=\grxxma,ymin=\gryymi,ymax=\gryyma]
+%   \tkzFct[domain=\grxxmi:\grxxma, ultra thick, color=\colore]
+%          {\funzione}
+% }
+
+\newcommand{\fpunti}[4]{% 
+% Grafico di una funzione con alcuni punti evidenziati.
+% esempio di chiamata:
+%   \disegno{
+%     \rcom{-3}{+8}{-4}{+12}{gray!50, very thin, step=1}
+%     \tkzInit[xmin=-3.3, xmax=+8.3, ymin=-4.3, ymax=+12.3]
+%     \fpunti{1./3*\x*\x -2*\x +5}{blue!50!black}{-2}{8}
+%   }
+  \def \function{#1}
+  \def \pcolor{#2}
+  \def \pfrom{#3}
+  \def \pto{#4}
+    \foreach \x in {\pfrom,...,\pto}
+      \filldraw [\pcolor] (\x, \function) circle (2pt);
+}
+
+\newcommand{\graficoepunti}[5]{% 
+% Grafico di una funzione con alcuni punti evidenziati.
+% esempio di chiamata:
+%   \disegno{
+%     \rcom{-3}{+8}{-4}{+12}{gray!50, very thin, step=1}
+%     \tkzInit[xmin=-3.3, xmax=+8.3, ymin=-4.3, ymax=+12.3]
+%     \graficoepunti{ultra thick, color=blue!50!black, domain=-3.3:+8.3}
+%                   {1./3*\x*\x -2*\x +5}
+%                   {blue!50!black}{-2}{8}
+%   }
+  \def \fparams{#1}
+  \def \function{#2}
+  \def \pcolor{#3}
+  \def \pfrom{#4}
+  \def \pto{#5}
+%   \tkzFct[\fparams]{\function}  % Questo no!
+%   \tkzFct \fparams {\function}  % Questo no!
+  \tkzFct[#1]{\function}  % Questo va!
+    \foreach \x in {\pfrom,...,\pto}
+      \filldraw [\pcolor] (\x, \function) circle (2pt);
+}
+
+\newcommand{\boxfcomposta}{% Rappresentazione di una funzione composta
+  % Devono essere assegnate alcune variabili.
+  % Esempio di chiamata:
+%   \def \latox{4}
+%   \def \latoy{2}
+%   \def \lab{\dfrac{\tonda{3x -2}^2}{8}}
+%   \def \labf{\dfrac{x^2}{8}}
+%   \def \labff{\dfrac{\xoo^2}{8}}
+%   \def \xo{6}
+%   \def \ff{\xoo*\xoo / 8}
+%   \def \labg{3x -2}
+%   \def \labgg{3 \cdot \xo -2}
+%   \def \labfa{g}
+%   \def \fg{3*\xo -2}
+%   \def \labfg{f(g(\xo))}
+%   \boxfcomposta
+  \def \slx{\latox/2}
+  \def \sly{\latoy/2}
+  \disegno{
+    \pgfmathparse{round(10*(\fg))/10} \let\xoo\pgfmathresult
+    \pgfmathparse{round(10*(\ff))/10} \let\xooo\pgfmathresult
+    \begin{scope}[-latex, rounded corners=4]
+      \draw (\slx*6, +\sly*3) node [above] {\(\lab\)}
+            (\slx*2, -\sly*2) rectangle ++ (\slx*8, \sly*5);
+      \draw (0, 0) -- (\slx*2, 0) node [midway, yshift=6pt] {\(x=\xo\)}; 
+      \draw (\slx*2, 0) -- (\slx*3, 0);
+      \draw (\slx*4, +\sly) node [above] {\(\labg\)}
+            (\slx*3, -\sly) rectangle ++ (\latox, \latoy) 
+            node [midway] {\(\labgg\)};
+      \draw (\slx*5, 0) -- (\slx*7, 0) 
+            node [midway, yshift=6pt] {\(\labfa(\xo) = \xoo\)};
+      \draw (\slx*7, -\sly) rectangle ++ (\latox, \latoy) 
+            node [midway] {\(\labff\)}
+            (\slx*8, +\sly) node [above] {\(\labf\)};
+      \draw (\slx*9, 0) -- (\slx*10, 0); 
+      \draw (\slx*10, 0) -- (\slx*12.5, 0) 
+            node [midway, yshift=6pt] {\(\labfg = \xooo\)};
+    \end{scope}
+  }
 }
 
 % \newcommand{\rcom}[5]{% Riferimento Cartesiano Ortogonale Monometrico: x-y.
@@ -238,7 +443,7 @@
 }
 
 %--------------------------
-% Funzioni per i grafi delle disequazioni
+% Disequazioni
 
 \newcommand{\cerchietto}[2]{% Cerchietto
   % Esempio di chiamata:
@@ -272,8 +477,81 @@
 
 \end{comment}
 
+\newcommand{\rettdec}[2][x]{% Retta decrescente
+  \def \val{#2}
+  \asse{-3}{+3}{0}{\(#1\)}
+  \draw [-] [ultra thick,blue!50!black] (-3, 1.2) -- (0, 0);
+  \draw [-] [ultra thick,red!50!black] (0, 0) -- (+3, -1.2);
+  \draw [black] (0, -.3) -- (0, +.8) node [above] {\(\val\)};
+}
+
+\newcommand{\rettcre}[2][x]{% Retta crescente
+  \def \val{#2}
+  \asse{-3}{+3}{0}{\(#1\)}
+  \draw [-] [ultra thick, red!50!black] (-3, -1.2) -- (0, 0);
+  \draw [-] [ultra thick, blue!50!black] (0, 0) -- (+3, +1.2);
+  \draw [black] (0, -.3) -- (0, +.8) node [above] {\(\val\)};
+}
+
+\newcommand{\rettpos}[1][x]{% Retta positiva
+  \asse{-3}{+3}{0}{\(#1\)}
+  \draw [-] [ultra thick, blue!50!black] (-3.3, +1) -- (+3.3, +1);
+}
+
+\newcommand{\rettneg}[1][x]{% Retta negativa
+  \asse{-3}{+3}{0}{\(#1\)}
+  \draw [-] [ultra thick, red!50!black] (-3.3, -1) -- (+3.3, -1);
+}
+
+\newcommand{\rettadec}[2][x]{% Retta decrescente
+  \disegno[5]{\rettdec[#1]{#2}}
+}
+
+\newcommand{\rettacre}[2][x]{% Retta decrescente
+  \disegno[5]{\rettcre[#1]{#2}}
+}
+
+\newcommand{\segni}[2]{% Retta crescente
+  \node [xshift=-30, yshift=-2, above] at (0, 0) {\(#1\)};
+  \draw (0, .4) circle (3pt);
+  \node [xshift=30, yshift=-2, above] at (0, 0) {\(#2\)};% xshift=+30: ERR!
+}
+
+\newcommand{\segnidec}[2][x]{% Retta decrescente
+  \disegno[5]{
+    \rettdec[#1]{#2}
+    \segni{+}{-}
+  }
+}
+
+\newcommand{\segnicre}[2][x]{% Retta crescente
+  \disegno[5]{
+    \rettcre[#1]{#2}
+    \segni{-}{+}
+  }
+}
+
 %--------------------------
-% Intervalli
+% Equazioni
+
+\newcommand{\zeriprodotto}[3]{% 
+% \zeriprodotto{(x-4)(x+2)(3x-1)=0}
+%              {+1.6/{3x-1=0~ \sRarrow ~x_1=\dfrac{1}{3}},
+%               -0.8/{~~x+2=0~ \sRarrow ~x_2=\dfrac{2}{5}},%-2},
+%               -2.9/{~~x-4=0~ \sRarrow ~x_3=4}}
+%              {-1.8}
+  \def \equazione{#1}
+  \def \variabili{#2}
+  \def \deltay{#3}
+  \def \xf{4.5}
+  \def \yi{-.5}
+  \disegno{
+  \node at (0, 0) {\(\equazione\)};
+  \foreach \xe\lab [count = \cont]in \variabili
+  \draw [-latex] (\xe, \yi) --  (\xe, \cont*\deltay) -- 
+                 (\xf, \cont*\deltay) node [right] {\(\lab\)};
+    }
+}
 
 % \newcommand{\trespolosegni}[4]{% Grafo calcolo del segno con enne assi
 %   % Esempio di chiamata:
@@ -301,6 +579,26 @@
      \assex{-\dimx}{+\dimx}{-\i*\dimy};
    \foreach \i in {1,...,\numpunti}
      \draw (\i*\largx-\dimx, 0) -- (\i*\largx-\dimx, -\numassi * \dimy);
+}
+
+\newcommand{\trespolosegnidis}[6]{% Grafo calcolo del segno con tre assi
+  % Esempio di chiamata:
+  %% \trespolosegni{5}{1.2}{3}{f(x), g(x), f(x)\cdot g(x)}{2}{2, 5}
+  \def \dimx{#1}
+  \def \dimy{#2}
+  \def \numassi{#3}
+  \def \labassi{#4}
+  \def \numpunti{#5}
+  \def \labpunti{#6}
+  \foreach \li [count = \i] in \labassi{
+    \assex{-\dimx}{\dimx}{-\i*\dimy}
+    \node at (-\dimx, -\i*\dimy) (posy) [above left=-.2] {\(\li\)};
+  }
+  \pgfmathparse{\dimx*2 / (\numpunti+1)} \let\largx\pgfmathresult
+  \foreach \li [count = \i] in \labpunti{
+    \draw (\i*\largx-\dimx, -\numassi * \dimy) -- (\i*\largx-\dimx, 0)
+          node [above] {\(\li\)};
+  }
 }
 
 \newcommand{\segnitreassiduepunti}[7]{% Grafo calcolo del segno con tre assi
@@ -345,8 +643,7 @@ disequazioni
   \def \secondoval{#7}
   \def \terzoval{#8}
   \def \posx{\dimx / 2}
-  \def \posy{0}          % \posy inchioda la 
-compilazione!!!!!!!!!!!??????????
+  \def \posy{0}          % \posy inchioda la compilazione!!!!!!!!!!!???????
   \def \posv{0}
   \assex{-\dimx}{+\dimx}{\posv}
   \draw (-\dimx, \posv) node [left] {\primaesp};
@@ -379,8 +676,56 @@ compilazione!!!!!!!!!!!??????????
      \draw (\i*\largx-\dimx, 0) -- (\i*\largx-\dimx, -\numassi * \dimy);
 }
 
+%--------------------------
+% Intervalli
 
-\newcommand{\inti}[7]{% Intervallo interno
+% TODO: unificare i vari intervalli
+
+\newcommand{\evidenzia}[3][blue]{% evidenziazione di un segmento
+  % \disegno{\evidenzia[green]{(0, -2)}{(+2, +5)}}
+  \def \colore{#1}
+  \def \a{#2}
+  \def \b{#3}
+  \draw [\colore, thick, decorate, decoration=snake] \a -- \b;
+}
+
+\newcommand{\evidenziameno}[4][blue]{
+  % Evidenzia un intervallo meno alcuni punti
+  % \disegno{\evidenziameno[orange]{(-5.3, 7)}{(+5.3, +7)}
+  %                                {(-4, 7), (-2, 7), (+3, 7)}}
+  \evidenzia[#1]{#2}{#3}
+  \foreach \pos in {#4}{
+    \draw [#1, fill=white] \pos circle (3pt);}
+}
+
+\newcommand{\evidenziada}[4][blue]{% Evidenzia fino ad un punto
+  % \disegno{\evidenziada[red]{(0, -2)}{(+2, +5)}{blue}}
+  \evidenzia[#1]{#2}{#3}
+  \draw [#1, fill=#4] #2 circle (3pt);
+}
+
+\newcommand{\evidenziafino}[4][blue]{% Evidenzia fino ad un punto
+  % \disegno{\evidenziafino{(0, -2)}{(+2, +5)}{white}}
+  \evidenzia[#1]{#2}{#3}
+  \draw [#1, fill=#4] #3 circle (3pt);
+}
+
+\newcommand{\evidenziadafino}[5][blue]{% Evidenzia fino ad un punto
+  % \disegno{\evidenziafino{(0, -2)}{(+2, +5)}{white}{blue}}
+  \evidenzia[#1]{#2}{#3}
+  \draw [#1, fill=#4] #2 circle (3pt);
+  \draw [#1, fill=#5] #3 circle (3pt);
+}
+
+% \newcommand{\evidenziatuttomeno}[4][blue]{
+% % Evidenzia un intervallo meno alcuni punti
+%   % \disegno{\evidenziatuttomeno[red]{(-5, 0)}{(+5, 0)}{-3/0, -2/0, 0/0, 4/0}}
+%   \evidenzia[#1]{#2}{#3}
+%   \foreach \xp/\yp in {#4}{
+%     \draw [#1, fill=white] (\xp, \yp) circle (3pt);}
+% }
+
+\newcommand{\inti}[7]{% Intervallo interno orizzontale
   % \disegno{\inti{0}{-2}{+2}{a}{b}{white}{black}}
   \def \posy{#1}
   \def \posa{#2}
@@ -391,9 +736,86 @@ compilazione!!!!!!!!!!!??????????
   \def \intb{#7}
   \coordinate (a) at (\posa, \posy);
   \coordinate (b) at (\posb, \posy);
-  \draw [blue, thick, decorate, decoration=snake] (a) -- (b);
-  \draw[fill=\inta] (a) circle (2pt) node [above] {\(\labela\)};
-  \draw[fill=\intb] (b) circle (2pt) node [above] {\(\labelb\)};
+%   \evidenzia{(\posa, \posy)}{(\posb, \posy)}
+  \evidenzia{(a)}{(b)}
+%   \draw [blue, thick, decorate, decoration=snake] (a) -- (b);
+  \draw[fill=\inta] (a) circle (3pt) node [above] {\(\labela\)};
+  \draw[fill=\intb] (b) circle (3pt) node [above] {\(\labelb\)};
+}
+
+\newcommand{\intid}[7]{% Intervallo ]a; b[ con disegno e asse
+  % \intid{5}{-2}{+2}{a}{b}{white}{black}
+  \disegno{
+    \assex{-#1}{+#1}{0}
+    \inti{0}{#2}{#3}{#4}{#5}{#6}{#7}
+  }
+}
+
+\newcommand{\inted}[7]{%  ]-infty; a[ u ]b; +infty[ con disegno e asse
+  % \inted{5}{-2}{+2}{a}{b}{white}{black}
+  \disegno{
+    \assex{-#1}{+#1}{0}
+    \inte{0}{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+  }
+}
+
+\newcommand{\intiaa}[5]{% Intervallo ]a; b[
+  % \intiaa{5}{-3}{3}{a}{b}
+  \intid{#1}{#2}{#3}{#4}{#5}{white}{white}
+}
+
+\newcommand{\intica}[5]{% Intervallo ]a; b[
+  \intid{#1}{#2}{#3}{#4}{#5}{black}{white}
+}
+
+\newcommand{\intiac}[5]{% Intervallo ]a; b[
+  \intid{#1}{#2}{#3}{#4}{#5}{white}{black}
+}
+
+\newcommand{\inticc}[5]{% Intervallo ]a; b[
+  \intid{#1}{#2}{#3}{#4}{#5}{black}{black}
+}
+
+\newcommand{\inteaa}[5]{% Intervallo ]a; b[
+  % \inteaa{5}{-3}{3}{a}{b}
+  \inted{#1}{#2}{#3}{#4}{#5}{white}{white}
+}
+
+\newcommand{\inteca}[5]{% Intervallo ]a; b[
+  \inted{#1}{#2}{#3}{#4}{#5}{black}{white}
+}
+
+\newcommand{\inteac}[5]{% Intervallo ]a; b[
+  \inted{#1}{#2}{#3}{#4}{#5}{white}{black}
+}
+
+\newcommand{\intecc}[5]{% Intervallo ]a; b[
+  \inted{#1}{#2}{#3}{#4}{#5}{black}{black}
+}
+
+\newcommand{\puntoa}[3]{% Intervallo ]a; b[
+  \intpunto{#1}{#2}{#3}{white}
+}
+
+\newcommand{\puntoc}[3]{% Intervallo [a; a]
+  \intpunto{#1}{#2}{#3}{black}
+}
+
+\newcommand{\intv}[1]{% Intervallo vuoto
+  \def \lung{#1}
+  \disegno{
+    \assex{-\lung / 2}{+\lung / 2}{0}
+    \draw[white] (0, 0) node [above] {\(0\)};
+  }
+}
+
+\newcommand{\intr}[1]{% Intervallo R
+  \def \lung{#1}
+  \disegno{
+    \assex{-\lung / 2}{+\lung / 2}{0}
+    \draw [blue, thick, decorate, decoration=snake] 
+          (-\lung / 2, 0) -- (+\lung / 2, 0);
+  }
 }
 
 \newcommand{\rayl}[5]{% semiretta sinistra
@@ -405,7 +827,7 @@ compilazione!!!!!!!!!!!??????????
   \def \intp{#5}
     \coordinate (p) at (\posp, \posy);
     \draw [blue, thick, decorate, decoration=snake] (-\lung, \posy) -- (p);
-    \draw[fill=\intp] (p) circle (2pt) node [above] {\(\labelp\)};
+    \draw[fill=\intp] (p) circle (3pt) node [above] {\(\labelp\)};
 }
 
 \newcommand{\rayr}[5]{% semiretta destra
@@ -417,7 +839,7 @@ compilazione!!!!!!!!!!!??????????
   \def \intp{#5}
     \coordinate (p) at (\posp, \posy);
     \draw [blue, thick, decorate, decoration=snake] (p) -- (+\lung, \posy);
-    \draw[fill=\intp] (p) circle (2pt) node [above] {\(\labelp\)};
+    \draw[fill=\intp] (p) circle (3pt) node [above] {\(\labelp\)};
 }
 
 \newcommand{\inte}[8]{% Intervallo esterno
@@ -425,22 +847,76 @@ compilazione!!!!!!!!!!!??????????
   \rayr{#1}{#2}{#4}{#6}{#8}
 }
 
-\newcommand{\inticonasse}[7]{% Intervallo interno con asse
-  % \disegno{\inti{0}{-2}{+2}{a}{b}{white}{black}}
+\newcommand{\inticonasse}[8]{% Intervallo interno con asse
+  % \disegno{\inti{0}{-2}{+2}{a}{b}{white}{black}{x}}
   \inti{#1}{#2}{#3}{#4}{#5}{#6}{#7}
-  \assev{#2-1}{#1}{#3+1}{#1}
+  \asse{#2-1}{#3+1}{#1}{\(#8\)}
 }
 
-\newcommand{\raylconasse}[5]{% semiretta sinistra con asse
-  % \disegno{\raylconasse{0}{5}{-2}{p}{white}}
-  \rayl{#1}{0}{#3}{#4}{#5}
-  \assev{0}{#1}{#2}{#1}
+\newcommand{\raylconasse}[6]{% semiretta sinistra con asse
+  % \disegno{\raylconasse{0}{5}{-2}{p}{white}{t}}
+  \rayl{#1}{0-.3}{#3}{#4}{#5}
+  \asse{0}{#2}{#1}{\(#6\)}
 }
 
-\newcommand{\rayrconasse}[5]{% semiretta sinistra con asse
-  % \disegno{\raylconasse{0}{5}{-2}{p}{white}}
-  \rayr{#1}{#2}{#3}{#4}{#5}
-  \assev{0}{#1}{#2}{#1}
+\newcommand{\rayrconasse}[6]{% semiretta sinistra con asse
+  % \disegno{\raylconasse{0}{5}{-2}{p}{white}{}}
+  \rayr{#1}{#2+.3}{#3}{#4}{#5}
+  \asse{0}{#2}{#1}{\(#6\)}
+}
+
+\newcommand{\allx}[3]{% per ogni x
+  % \disegno{\raylconasse{0}{5}{-2}{}}
+  \draw [blue, thick, decorate, decoration=snake] (-0.3, #1) -- (#2+0.3, #1);
+  \asse{0}{#2}{#1}{\(#3\)}
+  \draw [opacity=0] (0, 0) -- (0, .6);
+}
+
+\newcommand{\emptyx}[3]{% non esiste x
+  % \disegno{\raylconasse{0}{5}{-2}{}}
+  \asse{0}{#2}{#1}{\(#3\)}
+  \draw [opacity=0] (0, 0) -- (0, .6);
+}
+
+% \newcommand{\inticonasse}[7]{% Intervallo interno con asse
+%   % \disegno{\inti{0}{-2}{+2}{a}{b}{white}{black}}
+%   \inti{#1}{#2}{#3}{#4}{#5}{#6}{#7}
+%   \assev{#2-1}{#1}{#3+1}{#1}
+% }
+% 
+% \newcommand{\raylconasse}[5]{% semiretta sinistra con asse
+%   % \disegno{\raylconasse{0}{5}{-2}{p}{white}}
+%   \rayl{#1}{0}{#3}{#4}{#5}
+%   \assev{0}{#1}{#2}{#1}
+% }
+% 
+% \newcommand{\rayrconasse}[5]{% semiretta sinistra con asse
+%   % \disegno{\raylconasse{0}{5}{-2}{p}{white}}
+%   \rayr{#1}{#2}{#3}{#4}{#5}
+%   \assev{0}{#1}{#2}{#1}
+% }
+
+\newcommand{\ruffini}[4]{%
+  % 
+  \def \rigaa{#1}
+  \def \rigab{#2}
+  \def \rigac{#3}
+  \def \dim{#4}
+%   \begin{tikzpicture}[x=5mm, y=5mm]
+
+    \foreach \val [count = \ival] in \rigaa 
+      \node at (\ival*2, 0) {\(\val\)};
+    \foreach \val [count = \ival] in \rigab 
+      \node at (\ival*2, -1) {\(\val\)};
+    \foreach \val [count = \ival] in \rigac 
+    \node at (\ival*2, -2) {\(\val\)};
+
+    \begin{scope}[blue!50!black]
+      \draw (3, .5) -- (3, -2.5);
+      \draw (\dim*2 - 1, .5) -- (\dim*2 - 1, -2.5);
+      \draw (1, -1.5) -- (\dim*2+1, -1.5);
+    \end{scope}
+%   \end{tikzpicture}
 }
 
 %--------------------------
@@ -458,9 +934,9 @@ compilazione!!!!!!!!!!!??????????
   \def \rad{#5}
   \def \postimes{#6}
   \def \labeltimes{#7}
-  \draw [fill=white, line join=round] \punto -- +(\anga: \lung)
+  \draw [color=gray, fill=white, line join=round] \punto -- +(\anga: \lung)
         arc [start angle=\angb, delta angle=350, radius=\rad] -- cycle;
-  \node [black] at \postimes {\labeltimes};
+  \node [gray] at \postimes {\footnotesize \labeltimes};
 }
 
 \newcommand{\grandangolo}[7]{% 
@@ -475,30 +951,73 @@ compilazione!!!!!!!!!!!??????????
   \def \rad{#5}
   \def \postimes{#6}
   \def \labeltimes{#7}
-  \draw [fill=white, line join=round, densely dash dot] 
+  \draw [color=gray, fill=white, line join=round, densely dash dot] 
         \punto -- +(\anga: \lung)
         arc [start angle=\angb, delta angle=350, radius=\rad] -- cycle;
-  \node at \postimes {\labeltimes};
+  \node [gray] at \postimes {\footnotesize \labeltimes};
 }
 
 \tikzset{
   telescopio/.pic={% Disegna un telescopio non standard
   % Esempio di chiamata:
   % \draw (-1, 1) pic [rotate=0, scale=.5] {telescopio=\infty};
-  \begin{scope}[ultra thick]
-    \draw [fill=black, rounded corners=2] (5.4, -1.4) rectangle (6.9, -0.4);
-    \draw [rounded corners=2] (1.4, -1.3) rectangle (5.6, -0.5);
-    \draw (0.4, -1.2) rectangle (1.4, -0.6);
+  \begin{scope}[color=gray, ultra thick]
+    \draw [fill=gray, rounded corners=2] (5.4, -1.4) rectangle (6.9, -0.4);
+    \draw [fill=white, rounded corners=2] (1.4, -1.3) rectangle (5.6, -0.5);
+    \draw [fill=white](0.4, -1.2) rectangle (1.4, -0.6);
     \draw [fill=white] (0.8, -1.2) circle (0.2);
-    \draw [fill=black, rounded corners=1] 
+    \draw [fill=gray, rounded corners=1] 
           (0.4, -1.3) -- (0.4, -0.5) -- (-0.45, -0.5) -- cycle;
-    \draw (-0.2, -0.5) rectangle (0.2, -0.2);
-    \draw [fill=black, rounded corners=1] (-0.3, -0.2) rectangle (0.3, 0);
-    \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9) 
-          node [right, yshift=1mm] {#1};
+    \draw [fill=white] (-0.2, -0.5) rectangle (0.2, -0.2);
+    \draw [fill=gray, rounded corners=.5] (-0.3, -0.2) rectangle (0.3, 0);
+%     \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9); 
+%     \node at (8.8, -.9) {#1};
+    \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9); 
+    \node at (9.2, -.9) [black] {#1};
   \end{scope}
   }
 }
+
+% \tikzset{
+%   telescopio/.pic={% Disegna un telescopio non standard
+%   % Esempio di chiamata:
+%   % \draw (-1, 1) pic [rotate=0, xscale=.5, yscale=-.5] {telescopio=\infty};
+%   \begin{scope}[color=gray, ultra thick]
+%     \draw [fill=gray, rounded corners=2] (5.4, -1.4) rectangle (6.9, -0.4);
+%     \draw [fill=white, rounded corners=2] (1.4, -1.3) rectangle (5.6, -0.5);
+%     \draw [fill=white](0.4, -1.2) rectangle (1.4, -0.6);
+%     \draw [fill=white] (0.8, -1.2) circle (0.2);
+%     \draw [fill=black, rounded corners=1] 
+%           (0.4, -1.3) -- (0.4, -0.5) -- (-0.45, -0.5) -- cycle;
+%     \draw [fill=white] (-0.2, -0.5) rectangle (0.2, -0.2);
+%     \draw [fill=gray, rounded corners=.5] (-0.3, -0.2) rectangle (0.3, 0);
+%     \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9); 
+%     \node [gray] at (9.2, -.9) {\footnotesize #1};
+%   \end{scope}
+%   }
+% }
+
+% % original:
+% \tikzset{
+%   telescopio/.pic={% Disegna un telescopio non standard
+%   % Esempio di chiamata:
+%   % \draw (-1, 1) pic [rotate=0, scale=.5] {telescopio=\infty};
+%   \begin{scope}[ultra thick]
+%     \draw [fill=black, rounded corners=2] (5.4, -1.4) rectangle (6.9, -0.4);
+%     \draw [rounded corners=2] (1.4, -1.3) rectangle (5.6, -0.5);
+%     \draw (0.4, -1.2) rectangle (1.4, -0.6);
+%     \draw [fill=white] (0.8, -1.2) circle (0.2);
+%     \draw [fill=black, rounded corners=1] 
+%           (0.4, -1.3) -- (0.4, -0.5) -- (-0.45, -0.5) -- cycle;
+%     \draw (-0.2, -0.5) rectangle (0.2, -0.2);
+%     \draw [fill=black, rounded corners=1] (-0.3, -0.2) rectangle (0.3, 0);
+% %     \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9); 
+% %     \node at (8.8, -.9) {#1};
+%     \draw [-{Stealth[length=2mm, open, round]}] (7.2, -.9) -- (8.2, -.9) 
+%           node [right] {#1};
+%   \end{scope}
+%   }
+% }
 
 % \newcommand{\ellisse}[5]{% disegna un'ellisse dati: centro, semiassi, colore
 %   % Esempio di chiamata:
@@ -529,6 +1048,21 @@ compilazione!!!!!!!!!!!??????????
   \def \colore{#5}
   \draw [ultra thick, color=\colore] (\xo, \yo)
         circle [x radius = {\semiassea}, y radius = {\semiasseb}];
+}
+
+\newcommand{\grafofunzsx}[3]{% 
+  % Funzione rappresentata come scatola nera a sinistra
+  % esempio di chiamata:
+  % \disegno[10]{\grafofunzsx{add}{\(\graffa{+7,~+5}\)}{\(+12\)}}
+  \def \nomef{#1}
+  \def \argomento{#2}
+  \def \risultato{#3}
+%   \disegno[10]{
+     \node [draw, fill=blue!20, minimum size=3em, rounded corners] 
+            at (0, 0) (block 1) {\nomef};
+     \draw [-angle 45] (-1, 0) node [left] {\argomento} -- (block 1.west);
+     \draw[-angle 45] (block 1.east) -- (1, 0) node [right] {\risultato};
+%   }
 }
 
 \begin{comment}

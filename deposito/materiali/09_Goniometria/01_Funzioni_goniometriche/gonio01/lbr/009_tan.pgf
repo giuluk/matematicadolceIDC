@@ -1,0 +1,16 @@
+% (c) 2014 Daniele Zambelli - daniele.zambelli@gmail.com
+
+%%%
+% La tangentoide nel piano cartesiano.
+%%%%
+%  
+\disegno[7]{
+  \rcom{-7}{+7}{-5}{+5}{gray!50, very thin, step=1}
+  \tkzInit[xmin=-7.5,xmax=+7.5,ymin=-5.3,ymax=+5.3]
+  \tkzFct[domain=-7.3:-4.8, ultra thick, color=green!50!black]{tan(x)}
+  \tkzFct[domain=-4.6:-1.7, ultra thick, color=green!50!black]{tan(x)}
+  \tkzFct[domain=-1.5:+1.5, ultra thick, color=green!50!black]{tan(x)}
+  \tkzFct[domain=+1.7:+4.6, ultra thick, color=green!50!black]{tan(x)}
+  \tkzFct[domain=+4.8:+7.3, ultra thick, color=green!50!black]{tan(x)}
+  \node at (0, -5.5) {\(\tan x\)};
+}
