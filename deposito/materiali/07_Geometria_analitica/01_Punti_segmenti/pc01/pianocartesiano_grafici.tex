@@ -1,5 +1,5 @@
 % (c) 2017 Daniele Zambelli - daniele.zambelli@gmail.com
-% 
+%
 % Tutti i grafici per il capitolo relativo al piano cartesiano
 %
 
@@ -29,13 +29,13 @@
 
 \newcommand{\assed}{% Asse cartesiano con i trattini
     \disegnod{8}{
-      \assecontrattini{-6}{6}{0}{\(x\)}
+      \assecontrattini{-6}{6}{0}{$x$}
       \node [below] at (0, -.05) {0};
       \node [below] at (1, -.05) {1};
     }
 }
 
-% 
+%
 \newcommand{\assee}{% Asse cartesiano nei quadretti
     \disegnod{8}{
       \draw[step=1.0, gray!50, very thin] (-6.3, -1.2) grid (6.3, 1.2);
@@ -47,12 +47,12 @@
 
 \newcommand{\assef}{% Asse cartesiano con alcuni esempi di numeri
     \disegnod{8}{
-      \assecontrattini{-6}{6}{0}{\(x\)}
+      \assecontrattini{-6}{6}{0}{$x$}
 %       \foreach \xi/\si in {-5, -4, ..., 1, 1.4142/\(\sqrt{2}\),
-%                            2, 3, 3.5/\(\frac{7}{2}\), 4, 5, 
+%                            2, 3, 3.5/\(\frac{7}{2}\), 4, 5,
 %                            -2.5/\(-\frac{5}{2}\)}
       \foreach \xi/\si in {-5, -4, -3, -1.5, 0, 1, 1.4,
-                           2, 3, 3.5/\(\frac{7}{2}\), 6, 
+                           2, 3, 3.5/\(\frac{7}{2}\), 6,
                            -2.5/\(-\frac{5}{2}\)}
       \filldraw (\xi, 0)circle (1.5pt) node [below, yshift=-.1cm] {\si};
     }
@@ -149,7 +149,7 @@
 \newcommand{\assistrani}{% Assi non ortogonali monometrici
 \begin{tikzpicture}[smooth]
   \begin{scope}[x=10mm, y=10mm, xshift=9mm, rotate=-120]
-  \draw [-{Stealth[length=2mm, open, round]}] (-2.3, 0) -- (3.3, 0) node 
+  \draw [-{Stealth[length=2mm, open, round]}] (-2.3, 0) -- (3.3, 0) node
   [below] {$x$};
   \draw [-] (0, -.05) -- (0, .1) node [below right] at (0, 0) {0};
   \draw [-] (1, -.05) -- (1, .1) node [below right] at (1, 0) {1};
@@ -158,7 +158,7 @@
   \end{scope}
 
   \begin{scope}[x=5mm, y=5mm, rotate=-50]
-  \draw [-{Stealth[length=2mm, open, round]}] (-3.3, 0) -- (5.3, 0) node 
+  \draw [-{Stealth[length=2mm, open, round]}] (-3.3, 0) -- (5.3, 0) node
   [below] {$y$};
   \draw [-] (0, -.05) -- (0, .1) node [below left] at (0, 0) {0};
   \draw [-] (1, -.05) -- (1, .1) node [below left] at (1, 0) {1};
@@ -230,9 +230,9 @@
       \draw [-] (b) -- (0, 6) node [left] {$y_B$};
       \begin{scope}[red]
       \filldraw (m) circle (1.5pt) node [below right] {M};
-      \draw [-] (m) -- (5, 0) 
+      \draw [-] (m) -- (5, 0)
         node [below, xshift=2pt] {$\dfrac{x_{A}+x_{B}}{2}$};
-      \draw [-] (m) -- (0, 4.5) 
+      \draw [-] (m) -- (0, 4.5)
         node [left, yshift=2pt] {$\dfrac{y_{A}+y_{B}}{2}$};
       \end{scope}
       \end{scope}
@@ -279,9 +279,9 @@
       \filldraw (g) circle (1.5pt) node [below right] {G};
 
       \begin{scope}[dotted]
-      \draw [-] (e) -- (g) 
+      \draw [-] (e) -- (g)
         node [below, xshift=1mm] at ($(e)!.5!(g)$) {$x_F - x_E$};
-      \draw [-] (f) -- (g) 
+      \draw [-] (f) -- (g)
         node [below, xshift=8mm] at ($(f)!.5!(g)$) {$y_F - y_E$};
       \end{scope}
     }
@@ -296,11 +296,11 @@
       \coordinate (xb) at (7, 0);
       \coordinate (yb) at (0, 8);
 
-      \fill [top color=green!30!black!20,bottom color=green!50!black!10] 
+      \fill [top color=green!30!black!20,bottom color=green!50!black!10]
       (a) -- (b) -- (xb) -- (xa) -- cycle;
 
       \rcom{-1}{+9}{-1}{+9}{gray!50, very thin, step=1}
-      
+
       \draw [-] (a) -- (b);
       \filldraw (a) circle (1.5pt) node [below right] {A};
       \filldraw (b) circle (1.5pt) node [below right] {B};
@@ -325,13 +325,13 @@
       \coordinate (d) at (6, 0);
       \coordinate (xd) at (6, 0);
 
-      \fill [top color=green!40!black!20,bottom color=green!80!black!05] 
+      \fill [top color=green!40!black!20,bottom color=green!80!black!05]
       (a) -- (b) -- (xb) -- (xa) -- cycle;
-      \fill [top color=orange!80!black!05,bottom color=orange!40!black!20] 
+      \fill [top color=orange!80!black!05,bottom color=orange!40!black!20]
       (b) -- (c) -- (xc) -- (xb) -- cycle;
-      \fill [top color=purple!40!black!20,bottom color=purple!80!black!05] 
+      \fill [top color=purple!40!black!20,bottom color=purple!80!black!05]
       (c) -- (d) -- (xd) -- (xc) -- cycle;
-        
+
       \rcom{-9}{+9}{-1}{+9}{gray!50, very thin, step=1}
 
       \draw [-] (a) -- (b) --(c) --(d);
@@ -355,7 +355,7 @@
       \coordinate (b) at (3, -1);
       \coordinate (c) at (2, 4);
 
-      \fill [top color=green!30!black!20,bottom color=green!50!black!10] 
+      \fill [top color=green!30!black!20,bottom color=green!50!black!10]
       (a) -- (b) -- (c) -- cycle;
 
       \rcom{-5}{+5}{-5}{+5}{gray!50, very thin, step=1}
@@ -376,10 +376,10 @@
       \coordinate (e) at (3, 4);
       \coordinate (f) at (-4, 4);
 
-      \fill [top color=green!80!black!05,bottom color=green!40!black!20] 
+      \fill [top color=green!80!black!05,bottom color=green!40!black!20]
       (a) -- (d) -- (e) -- (f) -- cycle;
 
-      \fill [top color=red!40!black!20,bottom color=red!80!black!05] 
+      \fill [top color=red!40!black!20,bottom color=red!80!black!05]
       (a) -- (b) -- (c) -- cycle;
 
       \rcom{-5}{+5}{-5}{+5}{gray!50, very thin, step=1}
@@ -400,7 +400,7 @@
       \coordinate (b) at (3, 4);
       \coordinate (c) at (2, -3);
 
-      \fill [top color=green!30!black!20,bottom color=green!50!black!10] 
+      \fill [top color=green!30!black!20,bottom color=green!50!black!10]
       (a) -- (b) -- (c) -- cycle;
 
       \rcom{-5}{+5}{-5}{+5}{gray!50, very thin, step=1}
@@ -418,7 +418,7 @@
       \coordinate (b) at (-4, 1);
       \coordinate (c) at (3, -4);
 
-      \fill [top color=red!30!black!20,bottom color=red!50!black!10] 
+      \fill [top color=red!30!black!20,bottom color=red!50!black!10]
       (a) -- (b) -- (c) -- cycle;
 
       \rcom{-5}{+5}{-5}{+5}{gray!50, very thin, step=1}

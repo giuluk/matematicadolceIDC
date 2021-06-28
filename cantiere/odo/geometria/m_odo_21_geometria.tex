@@ -1,12 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %        Matematica dolce
 %
-% Copyright 2016 Daniele Zambelli
+% Copyright 2016-22 Daniele Zambelli
 %
 %------------------------------
-% Matematica dolce per i licei Linguistico e economico sociale, volume 1
+% Matematica dolce per i licei, volume 1
 %
-% m_d_licei_17_1.tex
+% Compilation:
+% pdflatex --shell-escape m_d_licei_21_1.tex
 %------------------------------
 %
 % This work may be distributed and/or modified under the
@@ -23,10 +24,10 @@
 % Daniele Zambelli - daniele.zambelli@gmail.com
 %
 % This work consists of the files:
-%  -  m_d_1_les.tex (this file)
+%  -  m_d_licei_21_1.tex (this file)
 %  -  createpdf.py
 %  -  readme.md
-%  -  the part of code of the files under \matdir , img/  and lbr/ directories
+%  -  the part of code of the files under chap/, img/  and lbr/ directories
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %========================
@@ -39,6 +40,14 @@
 \newcommand{\moddir}{modifiche/}                    % MODIFICATO
 
 %========================
+% Classe del documento
+%========================
+\documentclass[10pt,a4paper,openright]{\magdir matsweetmem}
+% Per la versione in scala di grigio commentare la precedente e
+% decommentare la riga seguente
+% \documentclass[10pt,a4paper,openright,gray]{\magdir matsweetmem}
+
+%========================
 % Variabili del progetto
 %========================
 \input{\magdir variabili}
@@ -48,25 +57,29 @@
 %========================
 \newcommand{\editore}{Matematicamente.it}
 \newcommand{\serie}{Matematica \(C^3\)}
-\newcommand{\titolo}{Algebra 1}     % MODIFICATO
-\newcommand{\pdftitolo}{Matematica dolce}  % MODIFICATO
-\newcommand{\docvers}{\texttt{5.0.1}}
-\newcommand{\edizione}{2019}
+\newcommand{\titolo}{Geometria Razionale}           % MODIFICATO
+\newcommand{\pdftitolo}{Matematica dolce}           % MODIFICATO
+\newcommand{\docvers}{\texttt{8.0.1}}
+\newcommand{\edizione}{2021}
 \newcommand{\Edizione}{Edizione}
 \newcommand{\tipo}{ (versione completa)}
 \newcommand{\descr}{Testo per il primo biennio \protect\\
                     della Scuola Secondaria di II grado \\ \null
                     istituto professionale \\       % MODIFICATO
                     servizi socio-sanitari}         % MODIFICATO
-\newcommand{\oggi}{19 settembre 2019}               % MODIFICATO
-\newcommand{\mese}{settembre}                       % MODIFICATO
-\newcommand{\anno}{2019}
+\newcommand{\oggi}{19 giugno 2021}                  % MODIFICATO
+\newcommand{\mese}{giugno}                          % MODIFICATO
+\newcommand{\anno}{2021}
 \newcommand{\mcisbn}{}
 
 %========================
 % Lettura preambolo
 %========================
 \input{\magdir packages}
+
+%========================
+% Lettura definizioni
+%========================
 \input{\magdir definizioni}
 \input{\magdir definizioni_tikz}
 
@@ -74,7 +87,7 @@
 % Con o senza linguaggio di programmazione
 %========================
 \newif\ifcoding
-%\codingtrue    % commentare questa linea se NON si vuole il coding
+%\codingtrue     % commentare questa linea se NON si vuole il coding
 \codingfalse    % commentare questa linea se si vogliono le parti di coding
 
 %========================
@@ -82,28 +95,32 @@
 %========================
 \begin{document}
 \frontmatter
-\intestazione{\matdir 00_intestazioni/les/}{frontespizio}
-\intestazione{\matdir 00_intestazioni/les/}{colophon}
+\input{\matdir 00_intestazioni/les/frontespizio}
+\input{\matdir 00_intestazioni/les/colophon}
 \intestazione{\matdir 00_intestazioni/les/}{indice}
 \intestazione{\moddir 00_intestazioni/les/}{prefazione}
-%..................................................
+% ..................................................
+
+% ..................................................
 %
-% Primo tema: Aritmetica e Algebra
+% Terzo tema: Geometria
 %
 \mainmatter
-\parte{\moddir 0_a_parti/}{part_01_1_d}
-\capitolo{\matdir 02_Insiemi_numerici/01_Numeri_naturali/nat01/}
-         {naturali}
-\capitolo{\matdir 02_Insiemi_numerici/02_Numeri_interi/int01/}
-         {interi}
-\capitolo{\matdir 02_Insiemi_numerici/03_Numeri_razionali/raz02/}
-         {razionali}
-\capitolo{\matdir 03_Polinomi/01_Monomi_polinomi/calclett01/}
-         {calcololetterale}
-\capitolo{\matdir 03_Polinomi/02_Divisibilita/poldiv01/}
-         {divisibilita_scomposizione}
-\capitolo{\matdir 03_Polinomi/03_Frazioni_algebriche/frazalg01/}
-         {frazioni_algebriche}
+\parte{\moddir 0_a_parti/}{part_03_1_d}
+\capitolo{\matdir 05_Geometria_euclidea/01_Assiomi_teoremi/fond01/}
+         {fondamenti1}
+\capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/tri01/}
+         {triangoli1}
+\capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/parall01/}
+         {parallelismo1}
+\capitolo{\matdir 05_Geometria_euclidea/02_Triangoli_rette/quadr01/}
+         {quadrilateri1}
+\capitolo{\matdir 05_Geometria_euclidea/03_Circonferenza/circ01/}
+         {circonferenza1}
+\capitolo{\matdir 05_Geometria_euclidea/04_Equiestensione/equie01/}
+         {equiestensione1}
+\capitolo{\matdir 05_Geometria_euclidea/04_Equiestensione/prop01/}
+         {proporzionalita1}
 %..................................................
 %
 % Azzeramento numerazione capitoli

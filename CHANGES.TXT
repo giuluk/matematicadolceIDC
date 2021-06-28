@@ -1,0 +1,2 @@
+[248, 249] al file raz02/razionali.tex
+[ 32,  50] ho cambiato \(...\) con $...$ nel file pc01/pianocartesiano_grafici.tex

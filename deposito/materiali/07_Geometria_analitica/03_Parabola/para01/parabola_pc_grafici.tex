@@ -1,22 +1,22 @@
 % (c) 2014 Daniele Zambelli - daniele.zambelli@gmail.com
-% 
+%
 % Tutti i grafici per il capitolo relativo alle parabole
 %
 
 
-\newcommand{\parabolafuocoedirettrice}{% 
+\newcommand{\parabolafuocoedirettrice}{%
     % Parabola come luogo di punti.
   \disegno{
     \rcom{-3}{+12}{-5}{+7}{gray!50, very thin, step=1}
     \tkzInit[xmin=-3.3,xmax=+12.3,ymin=-5.3,ymax=+7.3]
     \tkzFct[domain=-5.3:+12.3, ultra thick, color=Maroon!50!black]
            {.25*x*x-2*x+1}
-    \foreach \pi/\pl in {(+4, -3)/V, (+4, -2)/F, 
-                         (+8, +1)/P_1, (+8, -4)/H_1, 
+    \foreach \pi/\pl in {(+4, -3)/V, (+4, -2)/F,
+                         (+8, +1)/P_1, (+8, -4)/H_1,
                          (+10, +6)/P_2, (+10, -4)/H_2}
-    \filldraw [blue!50!black] \pi circle (2pt) 
+    \filldraw [blue!50!black] \pi circle (2pt)
               node [below right] {\(\pl\)};
-    \draw [green!50!black, ultra thick] (-3.3, -4) 
+    \draw [green!50!black, ultra thick] (-3.3, -4)
           node [below right] {\(d\)}
           -- (+12.3, -4);
     \draw [blue!50!black, thick, dashed] (+4, -2) -- (+8, +1) -- (+8, -4);
@@ -24,7 +24,7 @@
   }
 }
 
-\newcommand{\parabolina}[2]{% 
+\newcommand{\parabolina}[2]{%
   \def \eq{#1}
   \def \paracaption{#2}
     % Parabola con a positivo.
@@ -37,13 +37,13 @@
 }
 
 
-\newcommand{\puntia}{% 
+\newcommand{\puntia}{%
   % Alcuni punti di una parabola.
   \disegno{
     \rcom{-4}{+6}{-4}{13}{gray!50, very thin, step=1}
     \foreach \pi in {
-    % (-4, 22), 
-    (-3, 13), (-2, 6), (-1, 1), 
+    % (-4, 22),
+    (-3, 13), (-2, 6), (-1, 1),
     (0, -2), (1, -3), (2, -2), (3, 1), (4, 6), (5, 13)}
     \filldraw [Maroon!50!black] \pi circle (1.5pt);
   }
@@ -54,16 +54,16 @@
     \disegno{
     \rcom{-4}{+6}{-4}{13}{gray!50, very thin, step=1}
     \foreach \pi in {
-    (-3, 13), (-2, 6), (-1, 1), (0, -2), (1, -3), (2, -2), (3, 1), 
+    (-3, 13), (-2, 6), (-1, 1), (0, -2), (1, -3), (2, -2), (3, 1),
     (4, 6), (5, 13),
-    (-2.5, 9.25), (-1.5, 3.25), (-0.5, -0.75), (0.5, -2.75), 
-    (1.5, -2.75), (2.5, -0.75), (3.5, 3.25), (4.5, 9.25) 
+    (-2.5, 9.25), (-1.5, 3.25), (-0.5, -0.75), (0.5, -2.75),
+    (1.5, -2.75), (2.5, -0.75), (3.5, 3.25), (4.5, 9.25)
     }
     \filldraw [Maroon!50!black] \pi circle (1.5pt);
     }
 }
 
-\newcommand{\graficotrinomio}{% 
+\newcommand{\graficotrinomio}{%
     % Grafico di un trinomio di secondo grado.
     \disegno{
     \rcom{-4}{+6}{-4}{13}{gray!50, very thin, step=1}
@@ -72,7 +72,7 @@
     }
 }
 
-\newcommand{\coefficientea}{% 
+\newcommand{\coefficientea}{%
     % Parabole con diversi coefficienti del termine di 2° grado.
     \disegno{
     \rcom{-10}{+10}{-10}{10}{gray!50, very thin, step=1}
@@ -90,14 +90,14 @@
     \end{scope}
     \end{scope}
     \begin{scope}[color=black]
-    \draw (-1.5, 9.5) node {a} (-4, 8.5) node {b} (-9, 2) node {c} 
+    \draw (-1.5, 9.5) node {a} (-4, 8.5) node {b} (-9, 2) node {c}
         (-9, -5.5) node {d} (-8, -7.5) node {e} (-5.6, -8.5) node {f}
         (-3.5, -9.5) node {g} (-1.5, -9.5) node {h};
     \end{scope}
     }
 }
 
-\newcommand{\quadrati}{% 
+\newcommand{\quadrati}{%
     % Numeri quadrati
     \disegno{
     \draw[gray!50, very thin, step=1] (-1, 1) grid (27, 7); % Griglia
@@ -110,10 +110,10 @@
                                             (\corner - \n, \n) --
                                             (\corner - 1, \n) --
                                             (\corner - 1, 1) --
-                                            (\corner, 1) -- cycle; 
+                                            (\corner, 1) -- cycle;
         \foreach \j in {1, ..., \n} {
-            \foreach \i in {1, ..., \n} { 
-                \fill[blue!40!white] (\n * \n / 2 + \n / 2 -.5 + \i, \j+.5) 
+            \foreach \i in {1, ..., \n} {
+                \fill[blue!40!white] (\n * \n / 2 + \n / 2 -.5 + \i, \j+.5)
                                     circle (.4);
             }
         }
@@ -129,7 +129,7 @@
     }
 }
 
-\newcommand{\disrapido}{% 
+\newcommand{\disrapido}{%
     % Metodo rapido per il disegno di parabole.
     \disegno{
     \tkzInit[xmin=-5.5,xmax=+5.5,ymin=-5.5,ymax=+15.5]
@@ -137,7 +137,7 @@
     \clip (-5.3, -1.3) rectangle (5.7, 13.8);
     \rcom{-5}{+5}{-1}{13}{gray!50, very thin, step=1}
 
-    \coordinate (a0) at (0, 0); \coordinate (a0p) at (1, 0); 
+    \coordinate (a0) at (0, 0); \coordinate (a0p) at (1, 0);
     \coordinate (a1) at (1, 1); \coordinate (a1p) at (2, 1);
     \coordinate (a2) at (2, 4); \coordinate (a2p) at (3, 4);
     \coordinate (a3) at (3, 9);
@@ -153,7 +153,7 @@
 
     \tkzFct[domain=-5:+5, ultra thick]{x*x}
 
-    \draw (i3) 
+    \draw (i3)
     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
@@ -166,7 +166,7 @@
     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
-    
+
     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1)
     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
@@ -180,45 +180,45 @@
     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1)
     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1);
 
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (a0)!.5!(i0m) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (a0)!.5!(i0m) $)
 {$-1$};
-    \draw node [left, scale=.7, xshift=+10pt] at ($ (i1)!.5!(i0m) $) 
+    \draw node [left, scale=.7, xshift=+10pt] at ($ (i1)!.5!(i0m) $)
 {$+1$};
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (i2m)!.5!(i2m) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (i2m)!.5!(i2m) $)
 {$-1$};
-    \draw node [left, scale=.7, xshift=+10pt] at ($ (i2)!.5!(i1m) $) 
+    \draw node [left, scale=.7, xshift=+10pt] at ($ (i2)!.5!(i1m) $)
 {$+3$};
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (i1m)!.5!(i1m) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (i1m)!.5!(i1m) $)
 {$-1$};
-    \draw node [left, scale=.7, xshift=+10pt] at ($ (i3)!.5!(i2m) $) 
+    \draw node [left, scale=.7, xshift=+10pt] at ($ (i3)!.5!(i2m) $)
 {$+5$};
 
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (a0)!.5!(a0p) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (a0)!.5!(a0p) $)
 {$+1$};
-    \draw node [left, scale=.7, xshift=+9pt] at ($ (a1)!.5!(a0p) $) 
+    \draw node [left, scale=.7, xshift=+9pt] at ($ (a1)!.5!(a0p) $)
 {$+1$};
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (a2p)!.5!(a2p) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (a2p)!.5!(a2p) $)
 {$+1$};
-    \draw node [left, scale=.7, xshift=+9pt] at ($ (a2)!.5!(a1p) $) 
+    \draw node [left, scale=.7, xshift=+9pt] at ($ (a2)!.5!(a1p) $)
 {$+3$};
-    \draw node [below, scale=.7, yshift=-7pt] at ($ (a1p)!.5!(a1p) $) 
+    \draw node [below, scale=.7, yshift=-7pt] at ($ (a1p)!.5!(a1p) $)
 {$+1$};
-    \draw node [left, scale=.7, xshift=+9pt] at ($ (a3)!.5!(a2p) $) 
+    \draw node [left, scale=.7, xshift=+9pt] at ($ (a3)!.5!(a2p) $)
 {$+5$};
 
     \end{scope}
     }
 }
 
-% \newcommand{\disrapido}{% 
+% \newcommand{\disrapido}{%
 %     % Metodo rapido per il disegno di parabole.
 %     \disegno{
 %     \tkzInit[xmin=-5.5,xmax=+5.5,ymin=-5.5,ymax=+15.5]
-% 
+%
 %     \clip (-5.3, -1.3) rectangle (5.7, 13.8);
 %     \rcom{-5}{+5}{-1}{13}{gray!50, very thin, step=1}
-% 
-%     \coordinate (a0) at (0, 0); \coordinate (a0p) at (1, 0); 
+%
+%     \coordinate (a0) at (0, 0); \coordinate (a0p) at (1, 0);
 %     \coordinate (a1) at (1, 1); \coordinate (a1p) at (2, 1);
 %     \coordinate (a2) at (2, 4); \coordinate (a2p) at (3, 4);
 %     \coordinate (a3) at (3, 9);
@@ -226,15 +226,15 @@
 %     \coordinate (i1) at (-1, 1); \coordinate (i1m) at (-2, 1);
 %     \coordinate (i2) at (-2, 4); \coordinate (i2m) at (-3, 4);
 %     \coordinate (i3) at (-3, 9);
-% 
+%
 %     \begin{scope}[red!50!black]
 %     % Senza etichetta
 %     \foreach \p in {a0, a1, a2, a3, i1, i2, i3}
 %     \filldraw (\p) circle (1.5pt);
-% 
+%
 %     \tkzFct[domain=-5:+5, ultra thick]{x*x}
-% 
-%     \draw (i3) 
+%
+%     \draw (i3)
 %     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
 %     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
 %     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
@@ -247,7 +247,7 @@
 %     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
 %     .. controls +(-.5, 0) and +(-.5, 0) .. ++(0, -1)
 %     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
-%     
+%
 %     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
 %     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1)
 %     .. controls +(0, -.5) and +(0, -.5) .. ++(+1, 0)
@@ -260,38 +260,38 @@
 %     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1)
 %     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1)
 %     .. controls +(+.5, 0) and +(+.5, 0) .. ++(0, +1);
-% 
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a0)!.5!(i0m) \)) 
+%
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a0)!.5!(i0m) \))
 % {\(-1\)};
-%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i1)!.5!(i0m) \)) 
+%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i1)!.5!(i0m) \))
 % {\(+1\)};
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (i2m)!.5!(i2m) \)) 
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (i2m)!.5!(i2m) \))
 % {\(-1\)};
-%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i2)!.5!(i1m) \)) 
+%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i2)!.5!(i1m) \))
 % {\(+3\)};
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (i1m)!.5!(i1m) \)) 
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (i1m)!.5!(i1m) \))
 % {\(-1\)};
-%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i3)!.5!(i2m) \)) 
+%     \draw node [left, scale=.7, xshift=+10pt] at (\( (i3)!.5!(i2m) \))
 % {\(+5\)};
-% 
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a0)!.5!(a0p) \)) 
+%
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a0)!.5!(a0p) \))
 % {\(+1\)};
-%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a1)!.5!(a0p) \)) 
+%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a1)!.5!(a0p) \))
 % {\(+1\)};
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a2p)!.5!(a2p) \)) 
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a2p)!.5!(a2p) \))
 % {\(+1\)};
-%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a2)!.5!(a1p) \)) 
+%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a2)!.5!(a1p) \))
 % {\(+3\)};
-%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a1p)!.5!(a1p) \)) 
+%     \draw node [below, scale=.7, yshift=-7pt] at (\( (a1p)!.5!(a1p) \))
 % {\(+1\)};
-%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a3)!.5!(a2p) \)) 
+%     \draw node [left, scale=.7, xshift=+9pt] at (\( (a3)!.5!(a2p) \))
 % {\(+5\)};
-% 
+%
 %     \end{scope}
 %     }
 % }
 
-\newcommand{\piancart}{% 
+\newcommand{\piancart}{%
     % Piano cartesiano  per il disegno di alcune parabole
     \disegno{
     \rcom{-10}{+10}{-10}{+10}{gray!50, very thin, step=1}
@@ -303,7 +303,7 @@
     }
 }
 
-\newcommand{\parabolaerette}{% 
+\newcommand{\parabolaerette}{%
     % Una parabola e tre rette nel piano cartesiano.
     \disegno{
     \rcom{-7}{+5}{-7}{+10}{gray!50, very thin, step=1}
@@ -325,7 +325,7 @@
     }
 }
 
-\newcommand{\parabolaetangenti}{% 
+\newcommand{\parabolaetangenti}{%
     % Parabola e tangenti.
     \disegno{
     \rcom{-5}{+10}{-6}{+11}{gray!50, very thin, step=1}
@@ -337,27 +337,27 @@
 
     \begin{scope}[color=Green!50!black]
     \coordinate (a) at (0, +2);
-    \filldraw  (a) circle (1.5pt); 
+    \filldraw  (a) circle (1.5pt);
     \node at (a) [xshift=-9pt] {\(A\)};
     \end{scope}
 
     \begin{scope}[color=Red!50!black]
     \coordinate (b) at (+8, +1);
-    \filldraw (b) circle (1.5pt); 
+    \filldraw (b) circle (1.5pt);
     \node at (b) [xshift=+7pt] {\(B\)};
     \end{scope}
 
     \begin{scope}[color=Blue!50!black]
     \coordinate (b) at (+5, -2);
-    \filldraw (b) circle (1.5pt); 
+    \filldraw (b) circle (1.5pt);
     \node at (b) [xshift=+7pt] {\(C\)};
-    \filldraw (+2, +4) circle (1.5pt); 
-    \filldraw (-2, -4) circle (1.5pt); 
+    \filldraw (+2, +4) circle (1.5pt);
+    \filldraw (-2, -4) circle (1.5pt);
     \end{scope}
     }
 }
 
-\newcommand{\intersezioniparabole}{% 
+\newcommand{\intersezioniparabole}{%
     % Intersezione tra due parabole.
     \disegno{
     \rcom{-3}{+5}{-6}{+10}{gray!50, very thin, step=1}
@@ -365,12 +365,12 @@
     \tkzFct[domain=-3.3:+5.3, ultra thick, color=Blue!50!black]{-x*x+2*x+8}
     \tkzFct[domain=-3.3:+5.3, ultra thick, color=Red!50!black]{5./4.*x*x-19./4.*x-1}
     \filldraw (-1, +5) circle (1.5pt) node [xshift=-9pt] {\(I_0\)};
-    \filldraw (+4, 0) circle (1.5pt) 
+    \filldraw (+4, 0) circle (1.5pt)
         node [xshift=9pt, yshift=6pt] {\(I_1\)};
     }
 }
 
-\newcommand{\parabolapertrepunti}{% 
+\newcommand{\parabolapertrepunti}{%
     % Parabola per tre punti.
     \disegno{
     \rcom{-5}{+5}{-9}{+10}{gray!50, very thin, step=1}
@@ -382,7 +382,7 @@
     }
 }
 
-\newcommand{\parabolaverticepunto}{% 
+\newcommand{\parabolaverticepunto}{%
     % Equazione della parabola dati vertice e punto.
     \disegno{
     \rcom{-1}{+10}{-6}{+8}{gray!50, very thin, step=1}
